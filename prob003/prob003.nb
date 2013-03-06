@@ -1,0 +1,88 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      1964,         78]
+NotebookOptionsPosition[      1475,         55]
+NotebookOutlinePosition[      1818,         70]
+CellTagsIndexPosition[      1775,         67]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Problem 3", "Section",
+ CellChangeTimes->{{3.518374631525465*^9, 3.5183746334705763`*^9}}],
+
+Cell["\<\
+The prime factors of 13195 are 5, 7, 13 and 29.
+
+What is the largest prime factor of the number 600851475143 ?\
+\>", "Text",
+ CellChangeTimes->{3.518374643885172*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsection",
+ CellChangeTimes->{{3.571594867196885*^9, 3.571594868043934*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Max", "[", 
+   RowBox[{"FactorInteger", "[", "600851475143", "]"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5183747150762434`*^9, 3.518374717865403*^9}, {
+  3.519534290095147*^9, 3.5195342929533105`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.`", ",", "6857"}], "}"}]], "Output",
+ CellChangeTimes->{{3.518374693210993*^9, 3.518374718548442*^9}, 
+   3.5195342935533447`*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 637},
+WindowMargins->{{48, Automatic}, {Automatic, 60}},
+FrontEndVersion->"8.0 for Microsoft Windows (32-bit) (October 6, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 96, 1, 71, "Section"],
+Cell[678, 25, 176, 5, 65, "Text"],
+Cell[CellGroupData[{
+Cell[879, 34, 96, 1, 36, "Subsection"],
+Cell[CellGroupData[{
+Cell[1000, 39, 260, 5, 31, "Input"],
+Cell[1263, 46, 172, 4, 30, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
