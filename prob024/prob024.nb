@@ -1,0 +1,95 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      2371,         85]
+NotebookOptionsPosition[      1880,         62]
+NotebookOutlinePosition[      2223,         77]
+CellTagsIndexPosition[      2180,         74]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Problem 24", "Section",
+ CellChangeTimes->{{3.5189007269344206`*^9, 3.518900728933535*^9}}],
+
+Cell[TextData[{
+ "A permutation is an ordered arrangement of objects. For example, 3124 is \
+one possible permutation of the digits 1, 2, 3 and 4. If all of the \
+permutations are listed numerically or alphabetically, we call it \
+lexicographic order. The lexicographic permutations of 0, 1 and 2 are:\n\n",
+ StyleBox["012   021   102   120   201   210", "Output"],
+ "\n\nWhat is the millionth lexicographic permutation of the digits 0, 1, 2, \
+3, 4, 5, 6, 7, 8 and 9?"
+}], "Text",
+ CellChangeTimes->{3.518900743148348*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsection",
+ CellChangeTimes->{{3.5716002212371187`*^9, 3.571600224453303*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"FromDigits", "[", 
+   RowBox[{
+    RowBox[{"Permutations", "[", 
+     RowBox[{"{", 
+      RowBox[{
+      "0", ",", "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", 
+       "7", ",", "8", ",", "9"}], "}"}], "]"}], "[", 
+    RowBox[{"[", "1000000", "]"}], "]"}], "]"}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.4049999999999998`", ",", "2783915460"}], "}"}]], "Output",
+ CellChangeTimes->{3.518900733827815*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 637},
+WindowMargins->{{Automatic, 237}, {Automatic, 0}},
+FrontEndVersion->"8.0 for Microsoft Windows (32-bit) (October 6, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 97, 1, 71, "Section"],
+Cell[679, 25, 523, 9, 137, "Text"],
+Cell[CellGroupData[{
+Cell[1227, 38, 98, 1, 36, "Subsection"],
+Cell[CellGroupData[{
+Cell[1350, 43, 345, 9, 31, "Input"],
+Cell[1698, 54, 142, 3, 30, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
