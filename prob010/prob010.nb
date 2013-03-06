@@ -1,0 +1,343 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     14028,        333]
+NotebookOptionsPosition[     13475,        309]
+NotebookOutlinePosition[     13819,        324]
+CellTagsIndexPosition[     13776,        321]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Problem 10", "Section",
+ CellChangeTimes->{{3.518808761579357*^9, 3.518808771692935*^9}}],
+
+Cell["\<\
+The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
+
+Find the sum of all the primes below two million.\
+\>", "Text",
+ CellChangeTimes->{{3.5188088163004866`*^9, 3.5188088243279457`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsection",
+ CellChangeTimes->{{3.5715955262605815`*^9, 3.5715955279886804`*^9}}],
+
+Cell[BoxData[
+ NamespaceBox["WolframAlphaQueryResults",
+  DynamicModuleBox[{Typeset`q$$ = "Primes less than 2000000", 
+   Typeset`opts$$ = {
+   AppearanceElements -> {"Extrusion", "Warnings", "Assumptions", "Pods"}, 
+    Asynchronous -> All, 
+    Method -> {
+     "ExtrusionChosen" -> {
+       "Values", "Values", 1, 1, "Input", "Prime[Range[1, 148933]]"}, 
+      "Formats" -> {"cell", "minput", "moutput", "msound", "dataformats"}}}, 
+   Typeset`elements$$ = {"Extrusion", "Warnings", "Assumptions", "Pods"}, 
+   Global`pod1$$ = XMLElement[
+   "pod", {"title" -> "Input interpretation", "scanner" -> "Identity", "id" -> 
+     "Input", "position" -> "100", "error" -> "false", "numsubpods" -> "1"}, {
+     XMLElement["subpod", {"title" -> ""}, {
+       XMLElement["cell", {"compressed" -> False, "string" -> True}, {
+         Cell[
+          BoxData[
+           FormBox[
+            TagBox[
+             FormBox[
+              TagBox[
+               GridBox[{{
+                  StyleBox[
+                   TagBox[
+                    GridBox[{{
+                    StyleBox[
+                    
+                    TemplateBox[{"\"primes\""}, "Row", 
+                    DisplayFunction -> (#& ), 
+                    InterpretationFunction -> (RowBox[{
+                    StyleBox[
+                    "Row", FontFamily -> "Bitstream Vera Sans", 
+                    FontSize -> -1 + Inherited], "[", 
+                    RowBox[{
+                    RowBox[{"{", #, "}"}], ",", "\" \""}], "]"}]& )], {
+                    LineIndent -> 0, LineSpacing -> {0.9, 0, 1.5}}], 
+                    TemplateBox[{
+                    StyleBox[
+                    "\"less than \"", 
+                    LinebreakAdjustments -> {1, 100, 1, 0, 100}, LineIndent -> 
+                    0, 
+                    GrayLevel[0.6], StripOnInput -> False], "2000000"}, "Row",
+                     DisplayFunction -> (
+                    RowBox[{#, "\[InvisibleSpace]", #2}]& ), 
+                    InterpretationFunction -> (RowBox[{
+                    StyleBox[
+                    "Row", FontFamily -> "Bitstream Vera Sans", 
+                    FontSize -> -1 + Inherited], "[", 
+                    RowBox[{"{", 
+                    RowBox[{#, ",", #2}], "}"}], "]"}]& )]}}, 
+                    GridBoxBackground -> {"Columns" -> {
+                    GrayLevel[0.949], None}, "Rows" -> {{None}}}, 
+                    GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                    ColumnsEqual -> False, RowsEqual -> False, 
+                    GridBoxDividers -> {"Columns" -> {
+                    GrayLevel[0.84], 
+                    GrayLevel[0.84], 
+                    GrayLevel[0.84]}, "Rows" -> {{
+                    GrayLevel[0.84]}}, 
+                    "RowsIndexed" -> {
+                    1 -> GrayLevel[0.84], -1 -> GrayLevel[0.84]}}, 
+                    GridBoxSpacings -> {
+                    "Columns" -> {1, 1, 1}, "Rows" -> {{0.3}}}, 
+                    GridBoxAlignment -> {
+                    "Columns" -> {{Left}}, "Rows" -> {{Baseline}}}, 
+                    AllowScriptLevelChange -> False], 
+                    Global`TagBoxWrapper["Separator" -> " | "]], 
+                   LineSpacing -> {1, 0, 1.5}, LineIndent -> 0]}}, 
+                GridBoxItemSize -> {
+                 "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                ColumnsEqual -> False, RowsEqual -> False, 
+                GridBoxSpacings -> {"Columns" -> {{
+                    AbsoluteThickness[-1]}}, "Rows" -> {{0}}}, 
+                AllowScriptLevelChange -> False], 
+               Global`TagBoxWrapper["Separator" -> " | "]], TraditionalForm], 
+             PolynomialForm[#, TraditionalOrder -> False]& ], 
+            TraditionalForm]], "Output"]}], 
+       XMLElement["dataformats", {}, {"plaintext"}]}]}], Global`pod2$$ = 
+   XMLElement[
+   "pod", {"title" -> "Values", "scanner" -> "SetTheory", "id" -> "Values", 
+     "position" -> "200", "error" -> "false", "numsubpods" -> "1"}, {
+     XMLElement["subpod", {"title" -> ""}, {
+       XMLElement["minput", {}, {"Prime[Range[1, 148933]]"}], 
+       XMLElement["cell", {"compressed" -> False, "string" -> True}, {
+         Cell[
+          BoxData[
+           FormBox[
+            StyleBox[
+             RowBox[{
+               RowBox[{"2", 
+                 StyleBox[
+                  RowBox[{"\[NoBreak]", 
+                    StyleBox["\" | \"", 
+                    GrayLevel[0.6], StripOnInput -> False]}], AutoSpacing -> 
+                  False], "3", 
+                 StyleBox[
+                  RowBox[{"\[NoBreak]", 
+                    StyleBox["\" | \"", 
+                    GrayLevel[0.6], StripOnInput -> False]}], AutoSpacing -> 
+                  False], "5", 
+                 StyleBox[
+                  RowBox[{"\[NoBreak]", 
+                    StyleBox["\" | \"", 
+                    GrayLevel[0.6], StripOnInput -> False]}], AutoSpacing -> 
+                  False], "7", 
+                 StyleBox[
+                  RowBox[{"\[NoBreak]", 
+                    StyleBox["\" | \"", 
+                    GrayLevel[0.6], StripOnInput -> False]}], AutoSpacing -> 
+                  False], "11", 
+                 StyleBox[
+                  RowBox[{"\[NoBreak]", 
+                    StyleBox["\" | \"", 
+                    GrayLevel[0.6], StripOnInput -> False]}], AutoSpacing -> 
+                  False], "13", 
+                 StyleBox[
+                  RowBox[{"\[NoBreak]", 
+                    StyleBox["\" | \"", 
+                    GrayLevel[0.6], StripOnInput -> False]}], AutoSpacing -> 
+                  False], "17", 
+                 StyleBox[
+                  RowBox[{"\[NoBreak]", 
+                    StyleBox["\" | \"", 
+                    GrayLevel[0.6], StripOnInput -> False]}], AutoSpacing -> 
+                  False], "19", 
+                 StyleBox[
+                  RowBox[{"\[NoBreak]", 
+                    StyleBox["\" | \"", 
+                    GrayLevel[0.6], StripOnInput -> False]}], AutoSpacing -> 
+                  False], "23", 
+                 StyleBox[
+                  RowBox[{"\[NoBreak]", 
+                    StyleBox["\" | \"", 
+                    GrayLevel[0.6], StripOnInput -> False]}], AutoSpacing -> 
+                  False], "29", 
+                 StyleBox[
+                  RowBox[{"\[NoBreak]", 
+                    StyleBox["\" | \"", 
+                    GrayLevel[0.6], StripOnInput -> False]}], AutoSpacing -> 
+                  False], "31", 
+                 StyleBox[
+                  RowBox[{"\[NoBreak]", 
+                    StyleBox["\" | \"", 
+                    GrayLevel[0.6], StripOnInput -> False]}], AutoSpacing -> 
+                  False], "37", 
+                 StyleBox[
+                  RowBox[{"\[NoBreak]", 
+                    StyleBox["\" | \"", 
+                    GrayLevel[0.6], StripOnInput -> False]}], AutoSpacing -> 
+                  False], "41", 
+                 StyleBox[
+                  RowBox[{"\[NoBreak]", 
+                    StyleBox["\" | \"", 
+                    GrayLevel[0.6], StripOnInput -> False]}], AutoSpacing -> 
+                  False], "43", 
+                 StyleBox[
+                  RowBox[{"\[NoBreak]", 
+                    StyleBox["\" | \"", 
+                    GrayLevel[0.6], StripOnInput -> False]}], AutoSpacing -> 
+                  False], "47", 
+                 StyleBox[
+                  RowBox[{"\[NoBreak]", 
+                    StyleBox["\" | \"", 
+                    GrayLevel[0.6], StripOnInput -> False]}], AutoSpacing -> 
+                  False], "53", 
+                 StyleBox[
+                  RowBox[{"\[NoBreak]", 
+                    StyleBox["\" | \"", 
+                    GrayLevel[0.6], StripOnInput -> False]}], AutoSpacing -> 
+                  False], "59", 
+                 StyleBox[
+                  RowBox[{"\[NoBreak]", 
+                    StyleBox["\" | \"", 
+                    GrayLevel[0.6], StripOnInput -> False]}], AutoSpacing -> 
+                  False], "61", 
+                 StyleBox[
+                  RowBox[{"\[NoBreak]", 
+                    StyleBox["\" | \"", 
+                    GrayLevel[0.6], StripOnInput -> False]}], AutoSpacing -> 
+                  False], "67", 
+                 StyleBox[
+                  RowBox[{"\[NoBreak]", 
+                    StyleBox["\" | \"", 
+                    GrayLevel[0.6], StripOnInput -> False]}], AutoSpacing -> 
+                  False], "71", 
+                 StyleBox[
+                  RowBox[{"\[NoBreak]", 
+                    StyleBox["\" | \"", 
+                    GrayLevel[0.6], StripOnInput -> False]}], AutoSpacing -> 
+                  False], "\"\[Ellipsis]\""}], " ", 
+               StyleBox[
+                RowBox[{"\"(\"", "\[NoBreak]", 
+                  
+                  TemplateBox[{"148933", "\" primes\""}, "Row", 
+                   DisplayFunction -> (RowBox[{#, " ", #2}]& ), 
+                   InterpretationFunction -> (RowBox[{
+                    StyleBox[
+                    "Row", FontFamily -> "Bitstream Vera Sans", 
+                    FontSize -> -1 + Inherited], "[", 
+                    RowBox[{
+                    RowBox[{"{", 
+                    RowBox[{#, ",", #2}], "}"}], ",", " "}], "]"}]& )], 
+                  "\[NoBreak]", "\")\""}], 
+                LinebreakAdjustments -> {1, 100, 1, 0, 100}, LineIndent -> 0, 
+                GrayLevel[0.6], StripOnInput -> False]}], 
+             LinebreakAdjustments -> {1, 10, 10000, 0, 100}, LineIndent -> 0],
+             TraditionalForm]], "Output"]}], 
+       XMLElement[
+       "dataformats", {}, {
+        "plaintext,minput,computabledata,formatteddata,numberdata"}]}], 
+     XMLElement["states", {"count" -> "1"}, {
+       XMLElement[
+       "state", {"name" -> "More", "input" -> "Values__More"}, {}]}]}], 
+   Global`aux1$$ = {True, False, {False}, False}, Global`aux2$$ = {
+   True, False, {False}, False}, Typeset`asyncpods$$ = {}, 
+   Typeset`nonpods$$ = {}, Typeset`initdone$$ = True, Typeset`queryinfo$$ = {
+   "success" -> "true", "error" -> "false", "numpods" -> "2", "datatypes" -> 
+    "", "timedout" -> "", "timing" -> "0.316", "parsetiming" -> "0.151", 
+    "parsetimedout" -> "false", "recalculate" -> "", "id" -> 
+    "MSP60619g71e8aga492fg300000e0cg2i02ba9844c&s=33", "related" -> 
+    "http://www4d.wolframalpha.com/api/v2/relatedQueries.jsp?id=\
+MSP60719g71e8aga492fg30000618f833bfefedeh5&s=33", "version" -> "2.1"}, 
+   Typeset`sessioninfo$$ = {
+   "TimeZone" -> -5., 
+    "Date" -> {2011, 7, 4, 17, 52, 8.8604853`8.700032476736933}, "Line" -> 5, 
+    "SessionID" -> 23060625293999489159}, Typeset`showpods$$ = {1, 2}, 
+   Typeset`failedpods$$ = {}, Typeset`chosen$$ = {
+   "Values", "Values", 1, 1, "Input", "Prime[Range[1, 148933]]"}, 
+   Typeset`open$$ = False, Typeset`newq$$ = "Primes less than 2000000"}, 
+   DynamicBox[ToBoxes[
+     AlphaIntegration`FormatAlphaResults[
+      Dynamic[{
+       1, {Global`pod1$$, Global`pod2$$}, {Global`aux1$$, Global`aux2$$}, 
+        Typeset`chosen$$, Typeset`open$$, Typeset`elements$$, Typeset`q$$, 
+        Typeset`opts$$, Typeset`nonpods$$, Typeset`queryinfo$$, 
+        Typeset`sessioninfo$$, Typeset`showpods$$, Typeset`failedpods$$, 
+        Typeset`newq$$}]], StandardForm],
+    ImageSizeCache->{198., {48., 18.}},
+    TrackedSymbols:>{Typeset`showpods$$, Typeset`failedpods$$}],
+   DynamicModuleValues:>{},
+   Initialization:>If[
+     Not[Typeset`initdone$$], WolframAlphaClient`Private`doAsyncUpdates[
+       Hold[{Global`pod1$$, Global`pod2$$}], Typeset`asyncpods$$, 
+       Dynamic[Typeset`failedpods$$]]; Typeset`asyncpods$$ = {}; 
+     Typeset`initdone$$ = True],
+   SynchronousInitialization->False],
+  BaseStyle->{Deployed -> True},
+  DeleteWithContents->True,
+  Editable->False,
+  SelectWithContents->True]], "WolframAlphaShortInput"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Total", "[", 
+   RowBox[{"Prime", "[", 
+    RowBox[{"Range", "[", 
+     RowBox[{"1", ",", " ", "148933"}], "]"}], "]"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5188086498839684`*^9, 3.5188086546842427`*^9}, {
+  3.5195344373305683`*^9, 3.519534441151787*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.8580000000000001`", ",", "142913828922"}], "}"}]], "Output",
+ CellChangeTimes->{3.518808791517069*^9, 3.519534442756879*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 637},
+WindowMargins->{{264, Automatic}, {Automatic, 30}},
+FrontEndVersion->"8.0 for Microsoft Windows (32-bit) (October 6, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 95, 1, 71, "Section"],
+Cell[677, 25, 198, 5, 65, "Text"],
+Cell[CellGroupData[{
+Cell[900, 34, 100, 1, 36, "Subsection"],
+Cell[1003, 37, 11923, 251, 83, "WolframAlphaShortInput"],
+Cell[CellGroupData[{
+Cell[12951, 292, 315, 7, 31, "Input"],
+Cell[13269, 301, 166, 3, 30, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
