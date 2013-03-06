@@ -1,0 +1,88 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      1943,         78]
+NotebookOptionsPosition[      1454,         55]
+NotebookOutlinePosition[      1797,         70]
+CellTagsIndexPosition[      1754,         67]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Problem 7", "Section",
+ CellChangeTimes->{{3.518443217388383*^9, 3.518443218979474*^9}}],
+
+Cell["\<\
+By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see \
+that the 6th prime is 13.
+
+What is the 10001st prime number?\
+\>", "Text",
+ CellChangeTimes->{3.518443231823209*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsection",
+ CellChangeTimes->{{3.571595196004692*^9, 3.5715951989568605`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Prime", "[", "10001", "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.518443241554765*^9, 3.51844325124932*^9}, {
+  3.5195343669955454`*^9, 3.519534369909712*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.`", ",", "104743"}], "}"}]], "Output",
+ CellChangeTimes->{{3.51844324723209*^9, 3.5184432518913565`*^9}, 
+   3.519534370387739*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 637},
+WindowMargins->{{216, Automatic}, {8, Automatic}},
+FrontEndVersion->"8.0 for Microsoft Windows (32-bit) (October 6, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 94, 1, 71, "Section"],
+Cell[676, 25, 203, 6, 65, "Text"],
+Cell[CellGroupData[{
+Cell[904, 35, 98, 1, 36, "Subsection"],
+Cell[CellGroupData[{
+Cell[1027, 40, 211, 4, 31, "Input"],
+Cell[1241, 46, 173, 4, 30, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
