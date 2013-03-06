@@ -1,0 +1,279 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      9762,        269]
+NotebookOptionsPosition[      9037,        238]
+NotebookOutlinePosition[      9380,        253]
+CellTagsIndexPosition[      9337,        250]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Problem 8", "Section",
+ CellChangeTimes->{{3.518443285082255*^9, 3.518443286698347*^9}, {
+   3.519534413745219*^9, 3.5195344265489516`*^9}, 3.5196944900685244`*^9}],
+
+Cell[TextData[{
+ "Find the greatest product of five consecutive digits in the 1000-digit \
+number.\n\n",
+ Cell[BoxData[{
+  FormBox[
+  "73167176531330624919225119674426574742355349194934", 
+   TraditionalForm], "\n", 
+  FormBox[
+  "96983520312774506326239578318016984801869478851843", 
+   TraditionalForm], "\n", 
+  FormBox[
+  "85861560789112949495459501737958331952853208805511", 
+   TraditionalForm], "\n", 
+  FormBox[
+  "12540698747158523863050715693290963295227443043557", 
+   TraditionalForm], "\n", 
+  FormBox[
+  "66896648950445244523161731856403098711121722383113", 
+   TraditionalForm], "\n", 
+  FormBox[
+  "62229893423380308135336276614282806444486645238749", 
+   TraditionalForm], "\n", 
+  FormBox[
+  "30358907296290491560440772390713810515859307960866", 
+   TraditionalForm], "\n", 
+  FormBox[
+  "70172427121883998797908792274921901699720888093776", 
+   TraditionalForm], "\n", 
+  FormBox[
+  "65727333001053367881220235421809751254540594752243", 
+   TraditionalForm], "\n", 
+  FormBox[
+  "52584907711670556013604839586446706324415722155397", 
+   TraditionalForm], "\n", 
+  FormBox[
+  "53697817977846174064955149290862569321978468622482", 
+   TraditionalForm], "\n", 
+  FormBox[
+  "83972241375657056057490261407972968652414535100474", 
+   TraditionalForm], "\n", 
+  FormBox[
+  "82166370484403199890008895243450658541227588666881", 
+   TraditionalForm], "\n", 
+  FormBox[
+  "16427171479924442928230863465674813919123162824586", 
+   TraditionalForm], "\n", 
+  FormBox[
+  "17866458359124566529476545682848912883142607690042", 
+   TraditionalForm], "\n", 
+  FormBox[
+  "24219022671055626321111109370544217506941658960408", 
+   TraditionalForm], "\n", 
+  FormBox[
+  "07198403850962455444362981230987879927244284909188", 
+   TraditionalForm], "\n", 
+  FormBox[
+  "84580156166097919133875499200524063689912560717606", 
+   TraditionalForm], "\n", 
+  FormBox[
+  "05886116467109405077541002256983155200055935729725", 
+   TraditionalForm], "\n", 
+  FormBox[
+  "71636269561882670428252483600823257530420752963450", TraditionalForm]}]]
+}], "Text",
+ CellChangeTimes->{{3.518443299288068*^9, 3.5184433268916464`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Original Solution", "Subsection",
+ CellChangeTimes->{{3.5196943546357784`*^9, 3.5196943569149084`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"number", ",", " ", "products"}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"number", "=", 
+      RowBox[{"IntegerDigits", "[", 
+       FormBox[
+        "731671765313306249192251196744265747423553491949349698352031277450632\
+623957831801698480186947885184385861560789112949495459501737958331952853208805\
+511125406987471585238630507156932909632952274430435576689664895044524452316173\
+185640309871112172238311362229893423380308135336276614282806444486645238749303\
+589072962904915604407723907138105158593079608667017242712188399879790879227492\
+190169972088809377665727333001053367881220235421809751254540594752243525849077\
+116705560136048395864467063244157221553975369781797784617406495514929086256932\
+197846862248283972241375657056057490261407972968652414535100474821663704844031\
+998900088952434506585412275886668811642717147992444292823086346567481391912316\
+282458617866458359124566529476545682848912883142607690042242190226710556263211\
+111093705442175069416589604080719840385096245544436298123098787992724428490918\
+884580156166097919133875499200524063689912560717606058861164671094050775410022\
+5698315520005593572972571636269561882670428252483600823257530420752963450",
+        TraditionalForm], "]"}]}], ";", " ", 
+     RowBox[{"products", "=", 
+      RowBox[{"{", "0", "}"}]}], ";", 
+     RowBox[{"Do", "[", 
+      RowBox[{
+       RowBox[{"AppendTo", "[", 
+        RowBox[{"products", ",", " ", 
+         RowBox[{
+          RowBox[{"number", "[", 
+           RowBox[{"[", "i", "]"}], "]"}], "*", 
+          RowBox[{"number", "[", 
+           RowBox[{"[", 
+            RowBox[{"i", "+", "1"}], "]"}], "]"}], "*", 
+          RowBox[{"number", "[", 
+           RowBox[{"[", 
+            RowBox[{"i", "+", "2"}], "]"}], "]"}], "*", 
+          RowBox[{"number", "[", 
+           RowBox[{"[", 
+            RowBox[{"i", "+", "3"}], "]"}], "]"}], "*", 
+          RowBox[{"number", "[", 
+           RowBox[{"[", 
+            RowBox[{"i", "+", "4"}], "]"}], "]"}]}]}], "]"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", " ", "1", ",", " ", 
+         RowBox[{
+          RowBox[{"Length", "[", 
+           RowBox[{"IntegerDigits", "[", "number", "]"}], "]"}], " ", "-", 
+          "4"}]}], "}"}]}], "]"}], ";", "  ", 
+     RowBox[{"Max", "[", "products", "]"}]}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5184433379622793`*^9, 3.5184433498649607`*^9}, {
+  3.5184437824087005`*^9, 3.518443805177003*^9}, {3.5184450802144313`*^9, 
+  3.5184451724667077`*^9}, {3.5184460025811872`*^9, 3.5184460048963203`*^9}, {
+  3.5195343761580696`*^9, 3.5195343814803743`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.04599999999999947`", ",", "40824"}], "}"}]], "Output",
+ CellChangeTimes->{{3.518445110547166*^9, 3.5184451322244062`*^9}, {
+   3.5184451740467978`*^9, 3.5184451792720966`*^9}, 3.5195343846475554`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Revised/Optimized Solution", "Subsection",
+ CellChangeTimes->{{3.519694365484399*^9, 3.5196943693796215`*^9}}],
+
+Cell["\<\
+Instead of using two variables (number, products) we only use 1 (number). \
+Instead of Do/AppendTo we use Table and as a result can take the Max \
+directly. It doesn\[CloseCurlyQuote]t cause much a difference in execution \
+speed, but based on what I have read using Table is more efficient than the \
+Do/AppendTo method.\
+\>", "Text",
+ CellChangeTimes->{{3.5196943769320536`*^9, 3.5196944648830843`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", "number", "}"}], ",", 
+    RowBox[{
+     RowBox[{"number", "=", 
+      RowBox[{"IntegerDigits", "[", 
+       FormBox[
+        "731671765313306249192251196744265747423553491949349698352031277450632\
+623957831801698480186947885184385861560789112949495459501737958331952853208805\
+511125406987471585238630507156932909632952274430435576689664895044524452316173\
+185640309871112172238311362229893423380308135336276614282806444486645238749303\
+589072962904915604407723907138105158593079608667017242712188399879790879227492\
+190169972088809377665727333001053367881220235421809751254540594752243525849077\
+116705560136048395864467063244157221553975369781797784617406495514929086256932\
+197846862248283972241375657056057490261407972968652414535100474821663704844031\
+998900088952434506585412275886668811642717147992444292823086346567481391912316\
+282458617866458359124566529476545682848912883142607690042242190226710556263211\
+111093705442175069416589604080719840385096245544436298123098787992724428490918\
+884580156166097919133875499200524063689912560717606058861164671094050775410022\
+5698315520005593572972571636269561882670428252483600823257530420752963450",
+        TraditionalForm], "]"}]}], ";", 
+     RowBox[{"Max", "[", 
+      RowBox[{"Table", "[", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"number", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], "*", 
+         RowBox[{"number", "[", 
+          RowBox[{"[", 
+           RowBox[{"i", "+", "1"}], "]"}], "]"}], "*", 
+         RowBox[{"number", "[", 
+          RowBox[{"[", 
+           RowBox[{"i", "+", "2"}], "]"}], "]"}], "*", 
+         RowBox[{"number", "[", 
+          RowBox[{"[", 
+           RowBox[{"i", "+", "3"}], "]"}], "]"}], "*", 
+         RowBox[{"number", "[", 
+          RowBox[{"[", 
+           RowBox[{"i", "+", "4"}], "]"}], "]"}]}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", " ", "1", ",", " ", 
+          RowBox[{
+           RowBox[{"Length", "[", 
+            RowBox[{"IntegerDigits", "[", "number", "]"}], "]"}], " ", "-", 
+           "4"}]}], "}"}]}], "]"}], "]"}]}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5196939760011215`*^9, 3.519694031669306*^9}, 
+   3.5196943185157127`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.`", ",", "40824"}], "}"}]], "Output",
+ CellChangeTimes->{3.519694033056385*^9, 3.5196943202508116`*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 637},
+WindowMargins->{{240, Automatic}, {Automatic, 0}},
+FrontEndVersion->"8.0 for Microsoft Windows (32-bit) (October 6, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 170, 2, 71, "Section"],
+Cell[752, 26, 2111, 64, 442, "Text"],
+Cell[CellGroupData[{
+Cell[2888, 94, 109, 1, 36, "Subsection"],
+Cell[CellGroupData[{
+Cell[3022, 99, 2686, 55, 432, "Input"],
+Cell[5711, 156, 242, 4, 30, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6002, 166, 116, 1, 36, "Subsection"],
+Cell[6121, 169, 415, 7, 65, "Text"],
+Cell[CellGroupData[{
+Cell[6561, 180, 2288, 48, 432, "Input"],
+Cell[8852, 230, 145, 3, 30, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
