@@ -1,0 +1,180 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      5457,        170]
+NotebookOptionsPosition[      4778,        140]
+NotebookOutlinePosition[      5120,        155]
+CellTagsIndexPosition[      5077,        152]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Problem 4", "Section",
+ CellChangeTimes->{{3.518374733094274*^9, 3.518374734030328*^9}, {
+  3.519534327721299*^9, 3.5195343298284197`*^9}, {3.519693829970769*^9, 
+  3.51969383173087*^9}}],
+
+Cell["\<\
+A palindromic number reads the same both ways. The largest palindrome made \
+from the product of two 2-digit numbers is 9009 = 91  99.
+
+Find the largest palindrome made from the product of two 3-digit numbers.\
+\>", "Text",
+ CellChangeTimes->{3.5183747484871545`*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Original Solution", "Subsection",
+ CellChangeTimes->{{3.519693823059374*^9, 3.5196938252915015`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "palindromes", "}"}], ",", " ", 
+    RowBox[{
+     RowBox[{"palindromes", " ", "=", " ", 
+      RowBox[{"{", "}"}]}], " ", ";", 
+     RowBox[{"Do", "[", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"ToString", "[", 
+           RowBox[{"x", "*", "y"}], "]"}], " ", "\[Equal]", " ", 
+          RowBox[{"StringReverse", "[", 
+           RowBox[{"ToString", "[", 
+            RowBox[{"x", "*", "y"}], "]"}], "]"}]}], ",", " ", 
+         RowBox[{"AppendTo", "[", 
+          RowBox[{"palindromes", ",", " ", 
+           RowBox[{"x", "*", "y"}]}], "]"}], ",", " ", "False"}], "]"}], ",", 
+       " ", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", " ", "100", ",", " ", "999"}], "}"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"y", ",", " ", "100", ",", " ", "999"}], "}"}]}], "]"}], ";", 
+     " ", 
+     RowBox[{"Max", "[", "palindromes", "]"}]}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5183890380865045`*^9, 3.5183890860462475`*^9}, {
+  3.518389611263288*^9, 3.518389647612367*^9}, {3.518389706618742*^9, 
+  3.5183897096019125`*^9}, {3.518389743484851*^9, 3.5183897538334427`*^9}, {
+  3.518389795770841*^9, 3.518389826234584*^9}, {3.51838992389417*^9, 
+  3.518389933427715*^9}, {3.518389991813054*^9, 3.518390058603874*^9}, {
+  3.518390148961043*^9, 3.518390157343522*^9}, {3.5183901954247003`*^9, 
+  3.51839025066986*^9}, {3.5183902919722223`*^9, 3.518390304964966*^9}, {
+  3.518390357036944*^9, 3.5183903863886228`*^9}, {3.519534305673038*^9, 
+  3.5195343102543*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"9.126`", ",", "906609"}], "}"}]], "Output",
+ CellChangeTimes->{{3.5183903697756724`*^9, 3.5183903976832685`*^9}, 
+   3.519534320362878*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Optimized Solution", "Subsection",
+ CellChangeTimes->{{3.5196938105006557`*^9, 3.5196938130438013`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", "max", "}"}], ",", 
+    RowBox[{
+     RowBox[{"max", "=", "0"}], ";", 
+     RowBox[{"Do", "[", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"x", " ", "y"}], ">", "max"}], ",", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"ToString", "[", 
+             RowBox[{"x", " ", "y"}], "]"}], "\[Equal]", 
+            RowBox[{"StringReverse", "[", 
+             RowBox[{"ToString", "[", 
+              RowBox[{"x", " ", "y"}], "]"}], "]"}]}], " ", ",", 
+           RowBox[{"max", " ", "=", " ", 
+            RowBox[{"x", " ", "y"}]}], ",", "Continue"}], "]"}], ",", 
+         "Break"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", "999", ",", "100", ",", 
+         RowBox[{"-", "1"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"y", ",", "999", ",", "x", ",", 
+         RowBox[{"-", "1"}]}], "}"}]}], "]"}], ";", "max"}]}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.519691522564793*^9, 3.519691612504937*^9}, {
+  3.519692203689751*^9, 3.51969221065615*^9}, {3.5196923437037597`*^9, 
+  3.5196923558704557`*^9}, {3.51969246696981*^9, 3.5196924981205916`*^9}, {
+  3.5196929909777813`*^9, 3.5196929931119037`*^9}, {3.5196933775788937`*^9, 
+  3.519693390832652*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1.4349999999999994`", ",", "906609"}], "}"}]], "Output",
+ CellChangeTimes->{3.51969339359781*^9, 3.5196937992930145`*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 637},
+WindowMargins->{{96, Automatic}, {8, Automatic}},
+FrontEndVersion->"8.0 for Microsoft Windows (32-bit) (October 6, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 193, 3, 71, "Section"],
+Cell[775, 27, 277, 6, 83, "Text"],
+Cell[CellGroupData[{
+Cell[1077, 37, 107, 1, 36, "Subsection"],
+Cell[CellGroupData[{
+Cell[1209, 42, 1627, 36, 92, "Input"],
+Cell[2839, 80, 179, 4, 30, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3067, 90, 110, 1, 36, "Subsection"],
+Cell[CellGroupData[{
+Cell[3202, 95, 1372, 35, 72, "Input"],
+Cell[4577, 132, 161, 3, 30, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
