@@ -1,0 +1,672 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     20107,        663]
+NotebookOptionsPosition[     18263,        593]
+NotebookOutlinePosition[     18608,        608]
+CellTagsIndexPosition[     18565,        605]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Problem 21", "Title",
+ CellChangeTimes->{{3.518889407500986*^9, 3.5188894091330795`*^9}, {
+   3.5195345602015963`*^9, 3.519534566860977*^9}, {3.5195346205380473`*^9, 
+   3.5195346216631117`*^9}, 3.519702724397501*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Problem", "Section",
+ CellChangeTimes->{{3.5197027331810036`*^9, 3.5197027338770437`*^9}}],
+
+Cell[TextData[{
+ "Let ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"d", "(", "n", ")"}], TraditionalForm]]],
+ " be defined as the sum of proper divisors of ",
+ Cell[BoxData[
+  FormBox["n", TraditionalForm]]],
+ " (numbers less than ",
+ Cell[BoxData[
+  FormBox["n", TraditionalForm]]],
+ " which divide evenly into ",
+ Cell[BoxData[
+  FormBox["n", TraditionalForm]]],
+ ").\nIf ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"d", "(", "a", ")"}], " ", "=", " ", "b"}], TraditionalForm]]],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"d", "(", "b", ")"}], "=", "a"}], TraditionalForm]]],
+ ", where ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"a", "\[NotEqual]", " ", "b"}], TraditionalForm]]],
+ ", then ",
+ Cell[BoxData[
+  FormBox["a", TraditionalForm]]],
+ " and ",
+ Cell[BoxData[
+  FormBox["b", TraditionalForm]]],
+ " are an amicable pair and each of ",
+ Cell[BoxData[
+  FormBox["a", TraditionalForm]]],
+ " and ",
+ Cell[BoxData[
+  FormBox["b", TraditionalForm]]],
+ " are called amicable numbers.\n\nFor example, the proper divisors of 220 \
+are 1, 2, 4, 5, 10, 11, 20, 22, 44, 55 and 110; therefore ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"d", "(", "220", ")"}], "=", "284"}], TraditionalForm]]],
+ ". The proper divisors of 284 are 1, 2, 4, 71 and 142; so ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"d", "(", "284", ")"}], "=", "220"}], TraditionalForm]]],
+ ".\n\nEvaluate the sum of all the amicable numbers under 10000."
+}], "Text",
+ CellChangeTimes->{{3.5188894140303597`*^9, 3.51888952400565*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Original Solution", "Section",
+ CellChangeTimes->{{3.5197027414294753`*^9, 3.5197027435085945`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"amicables", ",", "d"}], "}"}], ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"d", "[", "n_", "]"}], ":=", " ", 
+      RowBox[{"Total", "[", 
+       RowBox[{"Drop", "[", 
+        RowBox[{
+         RowBox[{"Divisors", "[", "n", "]"}], ",", 
+         RowBox[{"-", "1"}]}], "]"}], "]"}]}], ";", " ", 
+     RowBox[{"amicables", "=", 
+      RowBox[{"{", "}"}]}], ";", 
+     RowBox[{"Do", "[", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"i", " ", "\[Equal]", " ", 
+           RowBox[{"d", "[", 
+            RowBox[{"d", "[", "i", "]"}], "]"}]}], " ", "&&", " ", 
+          RowBox[{
+           RowBox[{"d", "[", "i", "]"}], " ", "\[NotEqual]", " ", "i"}]}], 
+         ",", " ", 
+         RowBox[{"AppendTo", "[", 
+          RowBox[{"amicables", ",", "i"}], "]"}], ",", " ", "Continue"}], 
+        "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", "10000"}], "}"}]}], "]"}], ";", 
+     RowBox[{"Total", "[", "amicables", "]"}]}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.519534584778002*^9, 3.5195345876231647`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Divisors", "::", "argx"}], "MessageName"], ":", 
+  " ", "\<\"\[NoBreak]\\!\\(Divisors\\)\[NoBreak] called with \
+\[NoBreak]\\!\\(0\\)\[NoBreak] arguments; 1 argument is expected. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/argx\\\", \
+ButtonNote -> \\\"Divisors::argx\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.518889533011165*^9, 3.5195345939575267`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.9510000000000003`", ",", "31626"}], "}"}]], "Output",
+ CellChangeTimes->{3.5188895339042163`*^9, 3.5195345948785796`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Optimization", "Section",
+ CellChangeTimes->{{3.5197027605005665`*^9, 3.519702762196663*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"amicables", ",", "d"}], "}"}], ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"d", "[", "n_", "]"}], ":=", " ", 
+      RowBox[{"Total", "[", 
+       RowBox[{"Drop", "[", 
+        RowBox[{
+         RowBox[{"Divisors", "[", "n", "]"}], ",", 
+         RowBox[{"-", "1"}]}], "]"}], "]"}]}], ";", " ", 
+     RowBox[{"amicables", "=", 
+      RowBox[{"{", "}"}]}], ";", 
+     RowBox[{"Do", "[", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"i", " ", "\[Equal]", " ", 
+           RowBox[{"d", "[", 
+            RowBox[{"d", "[", "i", "]"}], "]"}]}], " ", "&&", " ", 
+          RowBox[{
+           RowBox[{"d", "[", "i", "]"}], " ", "\[NotEqual]", " ", "i"}]}], 
+         ",", " ", 
+         RowBox[{"AppendTo", "[", 
+          RowBox[{"amicables", ",", "i"}], "]"}], ",", " ", "Continue"}], 
+        "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "2", ",", "10000"}], "}"}]}], "]"}], ";", 
+     RowBox[{"Total", "[", "amicables", "]"}]}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.519702978950061*^9, 3.519702980629157*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1.0290000000000057`", ",", "31626"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.5197027743363576`*^9, 3.519702841494199*^9, {3.5197029824412603`*^9, 
+   3.5197030098628287`*^9}}]
+}, Open  ]],
+
+Cell["\<\
+Convert Do/AppendTo to a Table operation and see what happens.\
+\>", "Text",
+ CellChangeTimes->{{3.519703187901012*^9, 3.5197032010207624`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", "d", "}"}], ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"d", "[", "n_", "]"}], ":=", " ", 
+      RowBox[{"Total", "[", 
+       RowBox[{"Drop", "[", 
+        RowBox[{
+         RowBox[{"Divisors", "[", "n", "]"}], ",", 
+         RowBox[{"-", "1"}]}], "]"}], "]"}]}], ";", " ", 
+     RowBox[{"Total", "[", 
+      RowBox[{"DeleteCases", "[", 
+       RowBox[{
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"i", " ", "\[Equal]", " ", 
+              RowBox[{"d", "[", 
+               RowBox[{"d", "[", "i", "]"}], "]"}]}], " ", "&&", " ", 
+             RowBox[{
+              RowBox[{"d", "[", "i", "]"}], " ", "\[NotEqual]", " ", "i"}]}], 
+            ",", " ", "i", ",", " ", "Null"}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "2", ",", "10000"}], "}"}]}], "]"}], ",", 
+        "Null"}], "]"}], "]"}]}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.519702978950061*^9, 3.519702980629157*^9}, {
+  3.519703209700259*^9, 3.5197032683996162`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.7330000000000041`", ",", "31626"}], "}"}]], "Output",
+ CellChangeTimes->{{3.5197032492945237`*^9, 3.5197032704307327`*^9}}]
+}, Open  ]],
+
+Cell["Reap/Sow vs Table", "Text",
+ CellChangeTimes->{{3.5197032965822287`*^9, 3.519703302300555*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", "d", "}"}], ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"d", "[", "n_", "]"}], ":=", 
+      RowBox[{"Total", "[", 
+       RowBox[{"Drop", "[", 
+        RowBox[{
+         RowBox[{"Divisors", "[", "n", "]"}], ",", 
+         RowBox[{"-", "1"}]}], "]"}], "]"}]}], ";", 
+     RowBox[{"Total", "[", 
+      RowBox[{"Flatten", "[", 
+       RowBox[{"Reap", "[", 
+        RowBox[{"Do", "[", 
+         RowBox[{
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"i", "\[Equal]", 
+              RowBox[{"d", "[", 
+               RowBox[{"d", "[", "i", "]"}], "]"}]}], "&&", 
+             RowBox[{
+              RowBox[{"d", "[", "i", "]"}], "\[NotEqual]", "i"}]}], ",", 
+            RowBox[{"Sow", "[", "i", "]"}], ",", "Continue"}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "2", ",", "10000"}], "}"}]}], "]"}], "]"}], 
+       "]"}], "]"}]}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.519703306035769*^9, 3.5197034061714964`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.983000000000006`", ",", 
+   RowBox[{"31626", "+", "Null"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.5197033802460136`*^9, 3.5197034076615815`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Block", "[", 
+  RowBox[{
+   RowBox[{"{", "d", "}"}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"d", "[", "n_", "]"}], ":=", 
+     RowBox[{"Total", "[", 
+      RowBox[{"Drop", "[", 
+       RowBox[{
+        RowBox[{"Divisors", "[", "n", "]"}], ",", 
+        RowBox[{"-", "1"}]}], "]"}], "]"}]}], ";", 
+    RowBox[{"Reap", "[", 
+     RowBox[{"Do", "[", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"i", "\[Equal]", 
+           RowBox[{"d", "[", 
+            RowBox[{"d", "[", "i", "]"}], "]"}]}], "&&", 
+          RowBox[{
+           RowBox[{"d", "[", "i", "]"}], "\[NotEqual]", "i"}]}], ",", 
+         RowBox[{"Sow", "[", "i", "]"}], ",", "Continue"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "2", ",", "10000"}], "}"}]}], "]"}], "]"}]}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.519703419278246*^9, 3.5197034478888826`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"Null", ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{
+     "220", ",", "284", ",", "1184", ",", "1210", ",", "2620", ",", "2924", 
+      ",", "5020", ",", "5564", ",", "6232", ",", "6368"}], "}"}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.519703420081292*^9, 3.5197034495329766`*^9}}]
+}, Open  ]],
+
+Cell["Try with Select", "Text",
+ CellChangeTimes->{{3.5197036586689386`*^9, 3.5197036613490915`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", "d", "}"}], ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"d", "[", "n_", "]"}], ":=", 
+      RowBox[{"Total", "[", 
+       RowBox[{"Drop", "[", 
+        RowBox[{
+         RowBox[{"Divisors", "[", "n", "]"}], ",", 
+         RowBox[{"-", "1"}]}], "]"}], "]"}]}], ";", " ", 
+     RowBox[{"Total", "[", 
+      RowBox[{"Select", "[", 
+       RowBox[{
+        RowBox[{"Range", "[", 
+         RowBox[{"2", ",", "10000"}], "]"}], ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"#", "\[Equal]", 
+           RowBox[{"d", "[", 
+            RowBox[{"d", "[", "#", "]"}], "]"}]}], "&&", 
+          RowBox[{
+           RowBox[{"d", "[", "#", "]"}], "\[NotEqual]", "#"}]}], "&"}]}], 
+       "]"}], "]"}]}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.519703667245429*^9, 3.5197037734725046`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.9830000000000062`", ",", "31626"}], "}"}]], "Output",
+ CellChangeTimes->{{3.5197037604787617`*^9, 3.5197037751986036`*^9}}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Which order should we do the tests in the If statement? i.e. how many cases \
+are there where ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"i", "\[Equal]", 
+    RowBox[{"d", "[", 
+     RowBox[{"d", "[", "i", "]"}], "]"}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"d", "[", "i", "]"}], "\[Equal]", "i"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "?"
+}], "Text",
+ CellChangeTimes->{{3.519703872238154*^9, 3.5197039363268194`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{Cell[""], 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", "d", "}"}], ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"d", "[", "n_", "]"}], ":=", 
+      RowBox[{"Total", "[", 
+       RowBox[{"Drop", "[", 
+        RowBox[{
+         RowBox[{"Divisors", "[", "n", "]"}], ",", 
+         RowBox[{"-", "1"}]}], "]"}], "]"}]}], ";", 
+     RowBox[{"Reap", "[", 
+      RowBox[{"Do", "[", 
+       RowBox[{
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"i", "\[Equal]", 
+           RowBox[{"d", "[", 
+            RowBox[{"d", "[", "i", "]"}], "]"}]}], ",", 
+          RowBox[{"Sow", "[", "i", "]"}], ",", "Continue"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "2", ",", "10000"}], "}"}]}], "]"}], "]"}]}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.519703895982512*^9, 3.519703898870677*^9}, 
+   3.5197039445442896`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"Null", " ", 
+    InterpretationBox[Cell[""],
+     TextCell[""]]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"6", " ", 
+       InterpretationBox[Cell[""],
+        TextCell[""]]}], ",", 
+      RowBox[{"28", " ", 
+       InterpretationBox[Cell[""],
+        TextCell[""]]}], ",", 
+      RowBox[{"220", " ", 
+       InterpretationBox[Cell[""],
+        TextCell[""]]}], ",", 
+      RowBox[{"284", " ", 
+       InterpretationBox[Cell[""],
+        TextCell[""]]}], ",", 
+      RowBox[{"496", " ", 
+       InterpretationBox[Cell[""],
+        TextCell[""]]}], ",", 
+      RowBox[{"1184", " ", 
+       InterpretationBox[Cell[""],
+        TextCell[""]]}], ",", 
+      RowBox[{"1210", " ", 
+       InterpretationBox[Cell[""],
+        TextCell[""]]}], ",", 
+      RowBox[{"2620", " ", 
+       InterpretationBox[Cell[""],
+        TextCell[""]]}], ",", 
+      RowBox[{"2924", " ", 
+       InterpretationBox[Cell[""],
+        TextCell[""]]}], ",", 
+      RowBox[{"5020", " ", 
+       InterpretationBox[Cell[""],
+        TextCell[""]]}], ",", 
+      RowBox[{"5564", " ", 
+       InterpretationBox[Cell[""],
+        TextCell[""]]}], ",", 
+      RowBox[{"6232", " ", 
+       InterpretationBox[Cell[""],
+        TextCell[""]]}], ",", 
+      RowBox[{"6368", " ", 
+       InterpretationBox[Cell[""],
+        TextCell[""]]}], ",", 
+      RowBox[{"8128", " ", 
+       InterpretationBox[Cell[""],
+        TextCell[""]]}]}], "}"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.5197039484935155`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Block", "[", 
+  RowBox[{
+   RowBox[{"{", "d", "}"}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"d", "[", "n_", "]"}], ":=", 
+     RowBox[{"Total", "[", 
+      RowBox[{"Drop", "[", 
+       RowBox[{
+        RowBox[{"Divisors", "[", "n", "]"}], ",", 
+        RowBox[{"-", "1"}]}], "]"}], "]"}]}], ";", 
+    RowBox[{"Reap", "[", 
+     RowBox[{"Do", "[", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"d", "[", "i", "]"}], "==", "i"}], ",", 
+         RowBox[{"Sow", "[", "i", "]"}], ",", "Continue"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "2", ",", "10000"}], "}"}]}], "]"}], "]"}]}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.5197039584810867`*^9, 3.5197039620162888`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"Null", ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"6", ",", "28", ",", "496", ",", "8128"}], "}"}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.519703963452371*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", "d", "}"}], ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"d", "[", "n_", "]"}], ":=", " ", 
+      RowBox[{"Total", "[", 
+       RowBox[{"Drop", "[", 
+        RowBox[{
+         RowBox[{"Divisors", "[", "n", "]"}], ",", 
+         RowBox[{"-", "1"}]}], "]"}], "]"}]}], ";", " ", 
+     RowBox[{"Total", "[", 
+      RowBox[{"DeleteCases", "[", 
+       RowBox[{
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"i", " ", "\[Equal]", " ", 
+              RowBox[{"d", "[", 
+               RowBox[{"d", "[", "i", "]"}], "]"}]}], " ", "&&", " ", 
+             RowBox[{
+              RowBox[{"d", "[", "i", "]"}], " ", "\[NotEqual]", " ", "i"}]}], 
+            ",", " ", "i", ",", " ", "Null"}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "2", ",", "10000"}], "}"}]}], "]"}], ",", 
+        "Null"}], "]"}], "]"}]}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.519702978950061*^9, 3.519702980629157*^9}, {
+  3.519703209700259*^9, 3.5197032683996162`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.9829999999999888`", ",", "31626"}], "}"}]], "Output",
+ CellChangeTimes->{3.519704099001124*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", "d", "}"}], ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"d", "[", "n_", "]"}], ":=", " ", 
+      RowBox[{"Total", "[", 
+       RowBox[{"Drop", "[", 
+        RowBox[{
+         RowBox[{"Divisors", "[", "n", "]"}], ",", 
+         RowBox[{"-", "1"}]}], "]"}], "]"}]}], ";", " ", 
+     RowBox[{"Total", "[", 
+      RowBox[{"DeleteCases", "[", 
+       RowBox[{
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"If", "[", " ", 
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{"d", "[", "i", "]"}], " ", "\[NotEqual]", " ", "i"}], "&&", 
+             RowBox[{"i", " ", "\[Equal]", " ", 
+              RowBox[{"d", "[", 
+               RowBox[{"d", "[", "i", "]"}], "]"}]}]}], " ", ",", " ", "i", 
+            ",", " ", "Null"}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "2", ",", "10000"}], "}"}]}], "]"}], ",", 
+        "Null"}], "]"}], "]"}]}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5197040679253464`*^9, 3.5197040754517775`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1.248000000000006`", ",", "31626"}], "}"}]], "Output",
+ CellChangeTimes->{{3.519704063511094*^9, 3.5197041045184393`*^9}}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 647},
+WindowMargins->{{Automatic, 11}, {-1, Automatic}},
+FrontEndVersion->"8.0 for Microsoft Windows (32-bit) (February 23, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 223, 3, 83, "Title"],
+Cell[CellGroupData[{
+Cell[827, 29, 96, 1, 71, "Section"],
+Cell[926, 32, 1533, 53, 137, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2496, 90, 106, 1, 71, "Section"],
+Cell[CellGroupData[{
+Cell[2627, 95, 1196, 33, 72, "Input"],
+Cell[3826, 130, 510, 9, 21, "Message"],
+Cell[4339, 141, 163, 3, 30, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4551, 150, 99, 1, 71, "Section"],
+Cell[CellGroupData[{
+Cell[4675, 155, 1194, 33, 86, "Input"],
+Cell[5872, 190, 218, 5, 44, "Output"]
+}, Open  ]],
+Cell[6105, 198, 154, 3, 29, "Text"],
+Cell[CellGroupData[{
+Cell[6284, 205, 1157, 31, 72, "Input"],
+Cell[7444, 238, 165, 3, 30, "Output"]
+}, Open  ]],
+Cell[7624, 244, 101, 1, 29, "Text"],
+Cell[CellGroupData[{
+Cell[7750, 249, 1086, 30, 72, "Input"],
+Cell[8839, 281, 191, 4, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9067, 290, 923, 27, 52, "Input"],
+Cell[9993, 319, 343, 9, 30, "Output"]
+}, Open  ]],
+Cell[10351, 331, 101, 1, 29, "Text"],
+Cell[CellGroupData[{
+Cell[10477, 336, 892, 26, 52, "Input"],
+Cell[11372, 364, 165, 3, 30, "Output"]
+}, Open  ]],
+Cell[11552, 370, 528, 17, 29, "Text"],
+Cell[CellGroupData[{
+Cell[12105, 391, 882, 26, 52, "Input"],
+Cell[12990, 419, 1555, 51, 55, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14582, 475, 770, 23, 52, "Input"],
+Cell[15355, 500, 222, 7, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15614, 512, 1157, 31, 72, "Input"],
+Cell[16774, 545, 137, 3, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16948, 553, 1110, 30, 72, "Input"],
+Cell[18061, 585, 162, 3, 30, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
