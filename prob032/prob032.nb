@@ -1,0 +1,312 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     10423,        302]
+NotebookOptionsPosition[      9625,        268]
+NotebookOutlinePosition[      9968,        283]
+CellTagsIndexPosition[      9925,        280]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Problem 32", "Section",
+ CellChangeTimes->{{3.519421302641387*^9, 3.5194213038334556`*^9}}],
+
+Cell["\<\
+We shall say that an n-digit number is pandigital if it makes use of all the \
+digits 1 to n exactly once; for example, the 5-digit number, 15234, is 1 \
+through 5 pandigital.
+
+The product 7254 is unusual, as the identity, 39 * 186 = 7254, containing \
+multiplicand, multiplier, and product is 1 through 9 pandigital.
+
+Find the sum of all products whose multiplicand/multiplier/product identity \
+can be written as a 1 through 9 pandigital.
+
+HINT: Some products can be obtained in more than one way so be sure to only \
+include it once in your sum.\
+\>", "Text",
+ CellChangeTimes->{{3.5194213417066216`*^9, 3.519421350738138*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Function", "Subsection",
+ CellChangeTimes->{{3.519421424921381*^9, 3.519421434944955*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"pandigitalQ", "[", "num_Integer", "]"}], ":=", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", "numlist", "}"}], ",", 
+    RowBox[{"Catch", "[", 
+     RowBox[{
+      RowBox[{"numList", "=", 
+       RowBox[{"IntegerDigits", "[", "num", "]"}]}], ";", 
+      RowBox[{"Do", "[", 
+       RowBox[{
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Count", "[", 
+            RowBox[{"numList", ",", "i"}], "]"}], "\[Equal]", "1"}], ",", 
+          "Continue", ",", " ", 
+          RowBox[{"Throw", "[", "False", "]"}]}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", 
+          RowBox[{"IntegerLength", "[", "num", "]"}]}], "}"}]}], "]"}], ";", 
+      RowBox[{"Throw", "[", "True", "]"}]}], "]"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.5194102085728426`*^9, 3.519410238980582*^9}, {
+  3.519410285046217*^9, 3.5194104297544937`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Original Solution", "Subsection",
+ CellChangeTimes->{{3.519421398745884*^9, 3.5194214009130077`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", "trythese2", "}"}], ",", 
+    RowBox[{
+     RowBox[{"trythese2", "=", 
+      RowBox[{"{", "}"}]}], ";", 
+     RowBox[{"Do", "[", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Plus", "[", 
+           RowBox[{
+            RowBox[{"IntegerLength", "[", "i", "]"}], ",", 
+            RowBox[{"IntegerLength", "[", "j", "]"}], ",", 
+            RowBox[{"IntegerLength", "[", 
+             RowBox[{"i", " ", "j"}], "]"}]}], "]"}], ">", "9"}], ",", " ", 
+         "Break", ",", " ", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{"Count", "[", 
+              RowBox[{
+               RowBox[{"IntegerDigits", "[", 
+                RowBox[{"i", " ", "j"}], "]"}], ",", "0"}], "]"}], "==", " ", 
+             "0"}], "&&", " ", 
+            RowBox[{
+             RowBox[{"Plus", "[", 
+              RowBox[{
+               RowBox[{"IntegerLength", "[", "i", "]"}], ",", 
+               RowBox[{"IntegerLength", "[", "j", "]"}], ",", 
+               RowBox[{"IntegerLength", "[", 
+                RowBox[{"i", " ", "j"}], "]"}]}], "]"}], "\[Equal]", "9"}], 
+            " ", "&&", 
+            RowBox[{"pandigitalQ", "[", 
+             RowBox[{"FromDigits", "[", 
+              RowBox[{"Join", "[", 
+               RowBox[{
+                RowBox[{"IntegerDigits", "[", "i", "]"}], ",", 
+                RowBox[{"IntegerDigits", "[", "j", "]"}], ",", 
+                RowBox[{"IntegerDigits", "[", 
+                 RowBox[{"i", " ", "j"}], "]"}]}], "]"}], "]"}], "]"}]}], ",", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{"trythese2", ",", " ", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", "j", ",", 
+               RowBox[{"i", " ", "j"}]}], "}"}]}], "]"}], ",", "Continue"}], 
+          "]"}]}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", "10000"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"j", ",", "1", ",", "10000"}], "}"}]}], "]"}], ";", 
+     RowBox[{"Total", "[", 
+      RowBox[{"DeleteDuplicates", "[", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"i", "[", 
+          RowBox[{"[", "3", "]"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "trythese2"}], "}"}]}], "]"}], "]"}], "]"}]}]}], 
+   "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5194107475286694`*^9, 3.5194107845117846`*^9}, {
+  3.5194108482744317`*^9, 3.5194109143062086`*^9}, {3.519410946483049*^9, 
+  3.5194109479381323`*^9}, {3.5194110477938433`*^9, 3.5194111693737974`*^9}, {
+  3.5194113024904113`*^9, 3.5194113659090385`*^9}, {3.5194129349647837`*^9, 
+  3.5194129694227543`*^9}, {3.5194148724646025`*^9, 3.5194149354682055`*^9}, {
+  3.5194151556197977`*^9, 3.5194151984642487`*^9}, {3.5194152345413117`*^9, 
+  3.5194152348953323`*^9}, {3.519415268017226*^9, 3.5194152983619623`*^9}, {
+  3.5194153578133626`*^9, 3.519415462016323*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"603.787`", ",", "45228"}], "}"}]], "Output",
+ CellChangeTimes->{3.5194160758154297`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Revised Solution", "Subsection",
+ CellChangeTimes->{{3.5194214087134542`*^9, 3.519421410720569*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"trythese2", ",", "pandigitalQ"}], "}"}], ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"pandigitalQ", "[", "num_Integer", "]"}], ":=", 
+      RowBox[{"Block", "[", 
+       RowBox[{
+        RowBox[{"{", "numlist", "}"}], ",", 
+        RowBox[{"Catch", "[", 
+         RowBox[{
+          RowBox[{"numList", "=", 
+           RowBox[{"IntegerDigits", "[", "num", "]"}]}], ";", 
+          RowBox[{"Do", "[", 
+           RowBox[{
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"Count", "[", 
+                RowBox[{"numList", ",", "i"}], "]"}], "\[Equal]", "1"}], ",", 
+              "Continue", ",", " ", 
+              RowBox[{"Throw", "[", "False", "]"}]}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "1", ",", 
+              RowBox[{"IntegerLength", "[", "num", "]"}]}], "}"}]}], "]"}], 
+          ";", 
+          RowBox[{"Throw", "[", "True", "]"}]}], "]"}]}], "]"}]}], ";", 
+     RowBox[{"trythese2", "=", 
+      RowBox[{"{", "}"}]}], ";", 
+     RowBox[{"Do", "[", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Plus", "[", 
+           RowBox[{
+            RowBox[{"IntegerLength", "[", "i", "]"}], ",", 
+            RowBox[{"IntegerLength", "[", "j", "]"}], ",", 
+            RowBox[{"IntegerLength", "[", 
+             RowBox[{"i", " ", "j"}], "]"}]}], "]"}], ">", "9"}], ",", " ", 
+         "Break", ",", " ", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{"Count", "[", 
+              RowBox[{
+               RowBox[{"IntegerDigits", "[", 
+                RowBox[{"i", " ", "j"}], "]"}], ",", "0"}], "]"}], "==", " ", 
+             "0"}], "&&", " ", 
+            RowBox[{
+             RowBox[{"Plus", "[", 
+              RowBox[{
+               RowBox[{"IntegerLength", "[", "i", "]"}], ",", 
+               RowBox[{"IntegerLength", "[", "j", "]"}], ",", 
+               RowBox[{"IntegerLength", "[", 
+                RowBox[{"i", " ", "j"}], "]"}]}], "]"}], "\[Equal]", "9"}], 
+            " ", "&&", 
+            RowBox[{"pandigitalQ", "[", 
+             RowBox[{"FromDigits", "[", 
+              RowBox[{"Join", "[", 
+               RowBox[{
+                RowBox[{"IntegerDigits", "[", "i", "]"}], ",", 
+                RowBox[{"IntegerDigits", "[", "j", "]"}], ",", 
+                RowBox[{"IntegerDigits", "[", 
+                 RowBox[{"i", " ", "j"}], "]"}]}], "]"}], "]"}], "]"}]}], ",", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{"trythese2", ",", " ", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", "j", ",", 
+               RowBox[{"i", " ", "j"}]}], "}"}]}], "]"}], ",", "Continue"}], 
+          "]"}]}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", "9999"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"j", ",", "1", ",", "99"}], "}"}]}], "]"}], ";", 
+     RowBox[{"Total", "[", 
+      RowBox[{"DeleteDuplicates", "[", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"i", "[", 
+          RowBox[{"[", "3", "]"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "trythese2"}], "}"}]}], "]"}], "]"}], "]"}]}]}], 
+   "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.519421062098629*^9, 3.5194211379839697`*^9}, {
+  3.5194212065548916`*^9, 3.5194212122172155`*^9}, {3.5194213696662207`*^9, 
+  3.519421380929865*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"6.8489999999999815`", ",", "45228"}], "}"}]], "Output",
+ CellChangeTimes->{{3.519421072027197*^9, 3.5194211451353784`*^9}, 
+   3.5194212193746247`*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 637},
+WindowMargins->{{Automatic, 117}, {Automatic, 0}},
+FrontEndVersion->"8.0 for Microsoft Windows (32-bit) (October 6, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 97, 1, 71, "Section"],
+Cell[679, 25, 640, 14, 173, "Text"],
+Cell[CellGroupData[{
+Cell[1344, 43, 96, 1, 36, "Subsection"],
+Cell[1443, 46, 933, 24, 92, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2413, 75, 107, 1, 36, "Subsection"],
+Cell[CellGroupData[{
+Cell[2545, 80, 3010, 71, 172, "Input"],
+Cell[5558, 153, 128, 3, 30, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5735, 162, 106, 1, 36, "Subsection"],
+Cell[CellGroupData[{
+Cell[5866, 167, 3525, 90, 252, "Input"],
+Cell[9394, 259, 191, 4, 30, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
