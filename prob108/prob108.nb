@@ -1,0 +1,628 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     18261,        619]
+NotebookOptionsPosition[     15886,        530]
+NotebookOutlinePosition[     16407,        552]
+CellTagsIndexPosition[     16322,        547]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Problem 108", "Title",
+ CellChangeTimes->{{3.5284807130619307`*^9, 3.528480715389064*^9}}],
+
+Cell[TextData[{
+ "In the following equation x, y, and n are positive integers.1\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     FractionBox["1", "x"], "+", 
+     FractionBox["1", "y"]}], "=", 
+    FractionBox["1", "n"]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "\nFor n = 4 there are exactly three distinct solutions : 1\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     FractionBox["1", "5"], "+", 
+     FractionBox["1", "20"]}], "=", 
+    FractionBox["1", "4"]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     FractionBox["1", "6"], "+", 
+     FractionBox["1", "12"]}], "=", 
+    FractionBox["1", "4"]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     FractionBox["1", "8"], "+", 
+     FractionBox["1", "8"]}], "=", 
+    FractionBox["1", "4"]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "\n\nWhat is the least value of n for which the number of distinct solutions \
+exceeds one - thousand?NOTE : This problem is an easier version of problem \
+110; it is strongly advised that you solve this one first."
+}], "Text",
+ CellChangeTimes->{{3.528480610119043*^9, 3.5284807056155047`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FindInstance", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"1", "/", "x"}], "+", 
+      RowBox[{"1", "/", "y"}]}], "\[Equal]", 
+     RowBox[{"1", "/", "4"}]}], " ", "&&", 
+    RowBox[{"x", ">", "0"}], "&&", 
+    RowBox[{"y", ">", "0"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "y"}], "}"}], ",", "Integers"}], "]"}]], "Input",
+ CellChangeTimes->{{3.528476554124053*^9, 3.5284766242460637`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"x", "\[Rule]", "5"}], ",", 
+    RowBox[{"y", "\[Rule]", "20"}]}], "}"}], "}"}]], "Output",
+ CellChangeTimes->{{3.528476595997448*^9, 3.5284766247660933`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "FindInstance"}]], "Input",
+ CellChangeTimes->{{3.5284766306354294`*^9, 3.5284766325485387`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"FindInstance\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"vars\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}]\\) finds an instance of \\!\\(\\*StyleBox[\\\"vars\
+\\\", \\\"TI\\\"]\\) that makes the statement \\!\\(\\*StyleBox[\\\"expr\\\", \
+\\\"TI\\\"]\\) be True. \\n\\!\\(\\*RowBox[{\\\"FindInstance\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"vars\\\", \
+\\\"TI\\\"], \\\",\\\", StyleBox[\\\"dom\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\) \
+finds an instance over the domain \\!\\(\\*StyleBox[\\\"dom\\\", \
+\\\"TI\\\"]\\). Common choices of \\!\\(\\*StyleBox[\\\"dom\\\", \
+\\\"TI\\\"]\\) are Complexes, Reals, Integers and Booleans. \
+\\n\\!\\(\\*RowBox[{\\\"FindInstance\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"vars\\\", \
+\\\"TI\\\"], \\\",\\\", StyleBox[\\\"dom\\\", \\\"TI\\\"], \\\",\\\", \
+StyleBox[\\\"n\\\", \\\"TI\\\"]}], \\\"]\\\"}]\\) finds \
+\\!\\(\\*StyleBox[\\\"n\\\", \\\"TI\\\"]\\) instances. \"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/FindInstance"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.528476633341584*^9},
+ CellTags->"Info3528458632-6336618"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FindInstance", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"1", "/", "x"}], "+", 
+      RowBox[{"1", "/", "y"}]}], "\[Equal]", 
+     RowBox[{"1", "/", "4"}]}], " ", "&&", 
+    RowBox[{"x", ">", "0"}], "&&", 
+    RowBox[{"y", ">", "0"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "y"}], "}"}], ",", "Integers", ",", "All"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.528476640682004*^9, 3.528476641420046*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"FindInstance", "::", "intpm"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Positive machine-sized integer expected at position \
+\[NoBreak]\\!\\(4\\)\[NoBreak] in \[NoBreak]\\!\\(FindInstance\\)\[NoBreak]. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/FindInstance\\\", ButtonNote -> \
+\\\"FindInstance::intpm\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.528476641924075*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FindInstance", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      FractionBox["1", "x"], "+", 
+      FractionBox["1", "y"]}], "\[Equal]", 
+     FractionBox["1", "4"]}], "&&", 
+    RowBox[{"x", ">", "0"}], "&&", 
+    RowBox[{"y", ">", "0"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "y"}], "}"}], ",", "Integers", ",", "1001"}], "]"}]], \
+"Input",
+ CellChangeTimes->{{3.5284767141022034`*^9, 3.5284767158543034`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"x", "\[Rule]", "5"}], ",", 
+     RowBox[{"y", "\[Rule]", "20"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"x", "\[Rule]", "6"}], ",", 
+     RowBox[{"y", "\[Rule]", "12"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"x", "\[Rule]", "8"}], ",", 
+     RowBox[{"y", "\[Rule]", "8"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"x", "\[Rule]", "12"}], ",", 
+     RowBox[{"y", "\[Rule]", "6"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"x", "\[Rule]", "20"}], ",", 
+     RowBox[{"y", "\[Rule]", "5"}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.5284767168523607`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FindInstance", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      FractionBox["1", "x"], "+", 
+      FractionBox["1", "y"]}], "\[Equal]", 
+     FractionBox["1", "4"]}], "&&", 
+    RowBox[{"0", "<", "x", "\[LessEqual]", "y"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "y"}], "}"}], ",", "Integers", ",", "1001"}], "]"}]], \
+"Input",
+ CellChangeTimes->{{3.5284767141022034`*^9, 3.5284767701414084`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"x", "\[Rule]", "5"}], ",", 
+     RowBox[{"y", "\[Rule]", "20"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"x", "\[Rule]", "6"}], ",", 
+     RowBox[{"y", "\[Rule]", "12"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"x", "\[Rule]", "8"}], ",", 
+     RowBox[{"y", "\[Rule]", "8"}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.5284767622859592`*^9, 3.5284767707844453`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Catch", "[", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Length", "[", 
+         RowBox[{"FindInstance", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              FractionBox["1", "x"], "+", 
+              FractionBox["1", "y"]}], "\[Equal]", 
+             FractionBox["1", "n"]}], "&&", 
+            RowBox[{"0", "<", "x", "\[LessEqual]", "y"}]}], ",", 
+           RowBox[{"{", 
+            RowBox[{"x", ",", "y"}], "}"}], ",", "Integers", ",", "1001"}], 
+          "]"}], "]"}], ">", "1000"}], ",", 
+       RowBox[{"Throw", "[", "n", "]"}], ",", "Continue"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", "1000", ",", "2000"}], "}"}]}], "]"}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.528476781394052*^9, 3.528476851174043*^9}, {
+  3.5284770255580177`*^9, 3.5284770258490343`*^9}, {3.5284771538153534`*^9, 
+  3.528477154555396*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"123.335`", ",", "Null"}], "}"}]], "Output",
+ CellChangeTimes->{3.5284769865697875`*^9, 3.528477296350506*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"test", "[", "n_", "]"}], ":=", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"1", "+", 
+     RowBox[{"n", "^", "2"}]}], ")"}], "/", "2"}]}]], "Input",
+ CellChangeTimes->{{3.5284774577967405`*^9, 3.5284774634850655`*^9}, {
+   3.528477504041385*^9, 3.5284775211203623`*^9}, 3.528477613293634*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Catch", "[", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"test", "[", "n", "]"}], ">", "1000"}], ",", 
+       RowBox[{"Throw", "[", "n", "]"}], ",", "Continue"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", "1", ",", "10000"}], "}"}]}], "]"}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.5284775357221975`*^9, 3.5284775535612173`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.`", ",", "45"}], "}"}]], "Output",
+ CellChangeTimes->{3.5284775545682755`*^9, 3.528477619282977*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Length", "[", 
+  RowBox[{"FindInstance", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       FractionBox["1", "x"], "+", 
+       FractionBox["1", "y"]}], "\[Equal]", 
+      FractionBox["1", "45"]}], "&&", 
+     RowBox[{"0", "<", "x", "\[LessEqual]", "y"}]}], ",", 
+    RowBox[{"{", 
+     RowBox[{"x", ",", "y"}], "}"}], ",", "Integers", ",", "1001"}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.528477634166828*^9, 3.528477634849867*^9}}],
+
+Cell[BoxData["8"], "Output",
+ CellChangeTimes->{3.528477635587909*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FindInstance", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      FractionBox["4", "x"], "+", 
+      FractionBox["4", "y"]}], "\[Equal]", "1"}], "&&", 
+    RowBox[{"0", "<", "x", "\[LessEqual]", "y"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "y"}], "}"}], ",", "Integers", ",", "1001"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.528477873740531*^9, 3.528477891117525*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"x", "\[Rule]", "5"}], ",", 
+     RowBox[{"y", "\[Rule]", "20"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"x", "\[Rule]", "6"}], ",", 
+     RowBox[{"y", "\[Rule]", "12"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"x", "\[Rule]", "8"}], ",", 
+     RowBox[{"y", "\[Rule]", "8"}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.5284778793708525`*^9, 3.528477892381597*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Catch", "[", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Length", "[", 
+         RowBox[{"FindInstance", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              FractionBox["n", "x"], "+", 
+              FractionBox["n", "y"]}], "\[Equal]", "1"}], "&&", 
+            RowBox[{"0", "<", "x", "\[LessEqual]", "y"}]}], ",", 
+           RowBox[{"{", 
+            RowBox[{"x", ",", "y"}], "}"}], ",", "Integers", ",", "1001"}], 
+          "]"}], "]"}], ">", "1000"}], ",", 
+       RowBox[{"Throw", "[", "n", "]"}], ",", "Continue"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", "1", ",", "1000"}], "}"}]}], "]"}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.528477904205273*^9, 3.528477916433973*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"136.22`", ",", "Null"}], "}"}]], "Output",
+ CellChangeTimes->{3.528478060145192*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Sqrt", "[", "1999", "]"}], " ", "//", "N"}]], "Input",
+ CellChangeTimes->{{3.5284801708889203`*^9, 3.5284801898780065`*^9}}],
+
+Cell[BoxData["44.710177812216315`"], "Output",
+ CellChangeTimes->{{3.528480187597876*^9, 3.528480190222026*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"45", "^", "2"}]], "Input",
+ CellChangeTimes->{{3.5284801930061855`*^9, 3.5284802229408975`*^9}}],
+
+Cell[BoxData["2025"], "Output",
+ CellChangeTimes->{{3.528480194612277*^9, 3.528480223286917*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"2026", "/", "2"}]], "Input",
+ CellChangeTimes->{{3.528480196117363*^9, 3.5284801981104774`*^9}, {
+  3.528480235033589*^9, 3.5284802472662888`*^9}}],
+
+Cell[BoxData["1013"], "Output",
+ CellChangeTimes->{3.528480249683427*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FindInstance", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      FractionBox["1", "x"], "+", 
+      FractionBox["1", "y"]}], "\[Equal]", 
+     RowBox[{"1", "/", "45"}]}], "&&", 
+    RowBox[{"0", "<", "x", "\[LessEqual]", "y"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "y"}], "}"}], ",", "Integers", ",", "1001"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.528480264105252*^9, 3.52848027001859*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"x", "\[Rule]", "46"}], ",", 
+     RowBox[{"y", "\[Rule]", "2070"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"x", "\[Rule]", "48"}], ",", 
+     RowBox[{"y", "\[Rule]", "720"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"x", "\[Rule]", "50"}], ",", 
+     RowBox[{"y", "\[Rule]", "450"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"x", "\[Rule]", "54"}], ",", 
+     RowBox[{"y", "\[Rule]", "270"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"x", "\[Rule]", "60"}], ",", 
+     RowBox[{"y", "\[Rule]", "180"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"x", "\[Rule]", "70"}], ",", 
+     RowBox[{"y", "\[Rule]", "126"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"x", "\[Rule]", "72"}], ",", 
+     RowBox[{"y", "\[Rule]", "120"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"x", "\[Rule]", "90"}], ",", 
+     RowBox[{"y", "\[Rule]", "90"}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.5284802720217047`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"Length", "[", 
+     RowBox[{"Divisors", "[", 
+      RowBox[{"45", "^", "2"}], "]"}], "]"}], " ", "+", "1"}], ")"}], " ", 
+  "/", "2"}]], "Input",
+ CellChangeTimes->{{3.5284804451156054`*^9, 3.5284804749893136`*^9}}],
+
+Cell[BoxData["8"], "Output",
+ CellChangeTimes->{{3.528480460520486*^9, 3.5284804755773473`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Catch", "[", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"Length", "[", 
+            RowBox[{"Divisors", "[", 
+             RowBox[{"n", "^", "2"}], "]"}], "]"}], "+", "1"}], ")"}], "/", 
+         "2"}], ">", "1000"}], ",", 
+       RowBox[{"Throw", "[", "n", "]"}], ",", "Continue"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", "1", ",", "10000000"}], "}"}]}], "]"}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.528480489491143*^9, 3.528480535839794*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"17.877000000000017`", ",", "180180"}], "}"}]], "Output",
+ CellChangeTimes->{{3.5284805153156204`*^9, 3.528480555645927*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 514},
+WindowMargins->{{Automatic, 81}, {Automatic, 60}},
+ShowSelection->True,
+FrontEndVersion->"8.0 for Microsoft Windows (32-bit) (February 23, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info3528458632-6336618"->{
+  Cell[2823, 100, 1364, 24, 100, "Print",
+   CellTags->"Info3528458632-6336618"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info3528458632-6336618", 16216, 541}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 96, 1, 83, "Title"],
+Cell[678, 25, 1273, 41, 203, "Text"],
+Cell[CellGroupData[{
+Cell[1976, 70, 451, 13, 31, "Input"],
+Cell[2430, 85, 228, 6, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2695, 96, 125, 2, 31, "Input"],
+Cell[2823, 100, 1364, 24, 100, "Print",
+ CellTags->"Info3528458632-6336618"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4224, 129, 464, 14, 31, "Input"],
+Cell[4691, 145, 514, 10, 21, "Message"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5242, 160, 457, 14, 49, InheritFromParent],
+Cell[5702, 176, 716, 23, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6455, 204, 442, 13, 49, InheritFromParent],
+Cell[6900, 219, 494, 15, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7431, 239, 1013, 27, 130, "Input"],
+Cell[8447, 268, 149, 3, 30, "Output"]
+}, Open  ]],
+Cell[8611, 274, 324, 8, 31, "Input"],
+Cell[CellGroupData[{
+Cell[8960, 286, 467, 13, 31, "Input"],
+Cell[9430, 301, 142, 3, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9609, 309, 483, 14, 49, "Input"],
+Cell[10095, 325, 70, 1, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10202, 331, 415, 12, 49, "Input"],
+Cell[10620, 345, 492, 15, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11149, 365, 874, 24, 101, "Input"],
+Cell[12026, 391, 124, 3, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12187, 399, 159, 3, 31, "Input"],
+Cell[12349, 404, 112, 1, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12498, 410, 120, 2, 31, "Input"],
+Cell[12621, 414, 97, 1, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12755, 420, 171, 3, 31, "Input"],
+Cell[12929, 425, 73, 1, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13039, 431, 441, 13, 49, "Input"],
+Cell[13483, 446, 1105, 35, 50, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14625, 486, 280, 8, 31, "Input"],
+Cell[14908, 496, 96, 1, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15041, 502, 650, 19, 52, "Input"],
+Cell[15694, 523, 164, 3, 30, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
