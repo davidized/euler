@@ -1,0 +1,931 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     31214,        922]
+NotebookOptionsPosition[     29101,        844]
+NotebookOutlinePosition[     29446,        859]
+CellTagsIndexPosition[     29403,        856]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Problem 27", "Title",
+ CellChangeTimes->{{3.518905093855194*^9, 3.5189051028597097`*^9}, {
+   3.519534691700117*^9, 3.5195346942882657`*^9}, 3.519704361022111*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Problem", "Section",
+ CellChangeTimes->{{3.5197043727497816`*^9, 3.5197043733968186`*^9}}],
+
+Cell[TextData[{
+ "Euler published the remarkable quadratic formula:\n\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["n", "2"], "+", "n", "+", "41"}], TraditionalForm]]],
+ "\n\nIt turns out that the formula will produce 40 primes for the \
+consecutive values ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"n", "=", "0"}], TraditionalForm]]],
+ " to 39. However, when ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"n", "=", "40"}], TraditionalForm]]],
+ ", ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SuperscriptBox["40", "2"], "+", "40", "+", "41"}], "=", 
+    RowBox[{
+     RowBox[{"40", 
+      RowBox[{"(", 
+       RowBox[{"40", "+", "1"}], ")"}]}], "+", "41"}]}], TraditionalForm]]],
+ " is divisible by 41, and certainly when ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"n", "=", "41"}], TraditionalForm]]],
+ ", ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["n", "2"], "+", "41", "+", "41"}], TraditionalForm]]],
+ " is clearly divisible by 41.\n\nUsing computers, the incredible formula ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["n", "2"], "+", 
+    RowBox[{"79", "n"}], "+", "1601"}], TraditionalForm]]],
+ " was discovered, which produces 80 primes for the consecutive values ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"n", "=", "0"}], TraditionalForm]]],
+ " to 79. The product of the coefficients, 79 and 1601, is 126479.\n\n\
+Considering quadratics of the form:\n\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["n", "2"], "+", 
+    RowBox[{"a", " ", "n"}], "+", "b", " "}], TraditionalForm]]],
+ ", where ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"|", "a", "|", 
+    RowBox[{"<", " ", 
+     RowBox[{"1000", " ", "and"}]}], " ", "|", "b", "|", 
+    RowBox[{"<", " ", "1000"}]}], TraditionalForm]]],
+ "\nwhere ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"|", "n", "|"}], TraditionalForm]]],
+ " is the modulus/absolute value of ",
+ Cell[BoxData[
+  FormBox["n", TraditionalForm]]],
+ "\ne.g. ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"|", "11", "|"}], "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"11", " ", "and"}], " ", "|", 
+      RowBox[{"-", "4"}], "|"}], "=", "4"}]}], TraditionalForm]]],
+ "|\n\nFind the product of the coefficients, ",
+ Cell[BoxData[
+  FormBox["a", TraditionalForm]]],
+ " and ",
+ Cell[BoxData[
+  FormBox["b", TraditionalForm]]],
+ ", for the quadratic expression that produces the maximum number of primes \
+for consecutive values of ",
+ Cell[BoxData[
+  FormBox["n", TraditionalForm]]],
+ ", starting with ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"n", "=", "0"}], TraditionalForm]]],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.5189051341695004`*^9, 3.518905459498108*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Original Solution", "Section",
+ CellChangeTimes->{{3.519704379957194*^9, 3.5197043830613713`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"max", ",", "try", ",", "ans"}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"max", " ", "=", " ", "0"}], ";", 
+     RowBox[{"Do", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"try", " ", "=", " ", 
+         RowBox[{"Catch", "[", 
+          RowBox[{"Do", "[", 
+           RowBox[{
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{"PrimeQ", "[", 
+               RowBox[{
+                RowBox[{"n", " ", "n"}], "+", 
+                RowBox[{"a", " ", "n"}], "+", "b"}], " ", "]"}], ",", 
+              "Continue", ",", 
+              RowBox[{"Throw", "[", 
+               RowBox[{"n", "-", "1"}], "]"}]}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"n", ",", "0", ",", "b"}], "}"}]}], "]"}], "]"}]}], ";", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"try", ">", "max"}], ",", 
+          RowBox[{
+           RowBox[{"max", " ", "=", " ", "try"}], ";", " ", 
+           RowBox[{"ans", " ", "=", " ", 
+            RowBox[{"a", " ", "b"}]}]}], ",", "Continue"}], "]"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"a", ",", 
+         RowBox[{"-", "1000"}], ",", "1000"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"b", ",", 
+         RowBox[{"-", "1000"}], ",", "1000"}], "}"}]}], "]"}], ";", "ans"}]}],
+    "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.518904304140025*^9, 3.518904423443849*^9}, {
+   3.5189044576228037`*^9, 3.5189044762718706`*^9}, {3.5189045091117487`*^9, 
+   3.5189045747235017`*^9}, {3.5189047839534693`*^9, 3.518904829833093*^9}, 
+   3.5189048610248775`*^9, {3.5189050692917895`*^9, 3.5189050805884356`*^9}, {
+   3.5189062301441865`*^9, 3.518906231915288*^9}, {3.518906305245482*^9, 
+   3.5189063076196175`*^9}, {3.519534683105626*^9, 3.51953469996059*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"50.37299999999999`", ",", 
+   RowBox[{"-", "59231"}]}], "}"}]], "Output",
+ GeneratedCell->False,
+ CellAutoOverwrite->False,
+ CellChangeTimes->{{3.5189062799200335`*^9, 3.518906293829829*^9}, 
+   3.5189063457677994`*^9, 3.519534737419732*^9, 3.5197044483461056`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Optimization", "Section",
+ CellChangeTimes->{{3.519704575717391*^9, 3.519704577236478*^9}}],
+
+Cell["\<\
+Inspired by Sebbe on the Project Euler forum for the problem. Use a function \
+to determine the number of primes that a given polynomial produces.\
+\>", "Text",
+ CellChangeTimes->{{3.5197384545521493`*^9, 3.5197384897851644`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"numPrimes", "[", 
+   RowBox[{"a_", ",", "b_", ",", "n_"}], "]"}], ":=", 
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{"PrimeQ", "[", 
+     RowBox[{
+      RowBox[{"n", "^", "2"}], "+", 
+      RowBox[{"a", " ", "n"}], "+", "b"}], "]"}], ",", 
+    RowBox[{"numPrimes", "[", 
+     RowBox[{"a", ",", "b", ",", 
+      RowBox[{"n", "+", "1"}]}], "]"}], ",", "n"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.519737876802104*^9, 3.5197379232877626`*^9}, {
+  3.5197379570176916`*^9, 3.5197379715645237`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"numPrimes", "[", 
+  RowBox[{"1", ",", "41", ",", "0"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5197379750707245`*^9, 3.5197379940568104`*^9}}],
+
+Cell[BoxData["40"], "Output",
+ CellChangeTimes->{3.51973799456584*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"numPrimes", "[", 
+  RowBox[{
+   RowBox[{"-", "79"}], ",", "1601", ",", "0"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5197380048594284`*^9, 3.5197380232534804`*^9}, 
+   3.519738239118827*^9}],
+
+Cell[BoxData["80"], "Output",
+ CellChangeTimes->{3.5197380236175013`*^9, 3.5197382398138666`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"Clear", "[", "numPrimes", "]"}]], "Input",
+ CellChangeTimes->{{3.5197382578889008`*^9, 3.519738262270151*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"numPrimes", ",", "max", ",", "ans"}], "}"}], ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"numPrimes", "[", 
+       RowBox[{"a_", ",", "b_", ",", "n_"}], "]"}], ":=", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"PrimeQ", "[", 
+         RowBox[{
+          RowBox[{"n", "^", "2"}], "+", 
+          RowBox[{"a", " ", "n"}], "+", "b"}], "]"}], ",", 
+        RowBox[{"numPrimes", "[", 
+         RowBox[{"a", ",", "b", ",", 
+          RowBox[{"n", "+", "1"}]}], "]"}], ",", "n"}], "]"}]}], ";", 
+     RowBox[{"max", "=", "0"}], ";", 
+     RowBox[{"Do", "[", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"numPrimes", "[", 
+           RowBox[{"a", ",", "b", ",", "0"}], "]"}], ">", "max"}], ",", " ", 
+         RowBox[{
+          RowBox[{"max", "=", 
+           RowBox[{"numPrimes", "[", 
+            RowBox[{"a", ",", "b", ",", "0"}], "]"}]}], ";", 
+          RowBox[{"ans", "=", 
+           RowBox[{"a", " ", "b"}]}], ";"}], ",", "Continue"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"a", ",", 
+         RowBox[{"-", "1000"}], ",", "1000"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"b", ",", 
+         RowBox[{"-", "1000"}], ",", "1000"}], "}"}]}], "]"}], ";", "ans"}]}],
+    "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5197382636202283`*^9, 3.5197383545654306`*^9}, {
+   3.519738390170467*^9, 3.5197384449966025`*^9}, 3.5197387041354246`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"43.75799999999999`", ",", 
+   RowBox[{"-", "59231"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.519738622288743*^9, 3.5197386465781326`*^9}, 
+   3.519738706455557*^9, 3.51973875667743*^9}]
+}, Open  ]],
+
+Cell["\<\
+We may be able to speed up the process by using Compile to compute the \
+polynomial.\
+\>", "Text",
+ CellChangeTimes->{{3.5197391722011967`*^9, 3.5197391907212553`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"poly", ",", "numPrimes", ",", "max", ",", "ans"}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"poly", "=", 
+      RowBox[{"Compile", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"a", ",", "_Integer"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"b", ",", "_Integer"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"n", ",", "_Integer"}], "}"}]}], "}"}], ",", 
+        RowBox[{
+         RowBox[{"n", "^", "2"}], "+", 
+         RowBox[{"a", " ", "n"}], "+", "b"}]}], "]"}]}], ";", 
+     RowBox[{
+      RowBox[{"numPrimes", "[", 
+       RowBox[{"a_", ",", "b_", ",", "n_"}], "]"}], ":=", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"PrimeQ", "[", 
+         RowBox[{"poly", "[", 
+          RowBox[{"a", ",", "b", ",", "n"}], "]"}], "]"}], ",", 
+        RowBox[{"numPrimes", "[", 
+         RowBox[{"a", ",", "b", ",", 
+          RowBox[{"n", "+", "1"}]}], "]"}], ",", "n"}], "]"}]}], ";", 
+     RowBox[{"max", "=", "0"}], ";", 
+     RowBox[{"Do", "[", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"numPrimes", "[", 
+           RowBox[{"a", ",", "b", ",", "0"}], "]"}], ">", "max"}], ",", " ", 
+         RowBox[{
+          RowBox[{"max", "=", 
+           RowBox[{"numPrimes", "[", 
+            RowBox[{"a", ",", "b", ",", "0"}], "]"}]}], ";", 
+          RowBox[{"ans", "=", 
+           RowBox[{"a", " ", "b"}]}], ";"}], ",", "Continue"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"a", ",", 
+         RowBox[{"-", "1000"}], ",", "1000"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"b", ",", 
+         RowBox[{"-", "1000"}], ",", "1000"}], "}"}]}], "]"}], ";", "ans"}]}],
+    "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5197382636202283`*^9, 3.5197383545654306`*^9}, {
+   3.519738390170467*^9, 3.5197384449966025`*^9}, 3.5197387041354246`*^9, {
+   3.519739008515834*^9, 3.5197391006991067`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"40.326`", ",", 
+   RowBox[{"-", "59231"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.5197391589474382`*^9}]
+}, Open  ]],
+
+Cell["\<\
+Since b must be prime, lets only iterate through primes up to 1000. This also \
+means that b has to be positive, so either way we\[CloseCurlyQuote]re \
+eliminating a huge number of tests. Below are tests with b from 0 to 1000, \
+and with b only testing primes up to 1000.\
+\>", "Text",
+ CellChangeTimes->{{3.5197396898738055`*^9, 3.519739706056731*^9}, {
+  3.51973975289641*^9, 3.519739799825094*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"poly", ",", "numPrimes", ",", "max", ",", "ans"}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"poly", "=", 
+      RowBox[{"Compile", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"a", ",", "_Integer"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"b", ",", "_Integer"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"n", ",", "_Integer"}], "}"}]}], "}"}], ",", 
+        RowBox[{
+         RowBox[{"n", "^", "2"}], "+", 
+         RowBox[{"a", " ", "n"}], "+", "b"}]}], "]"}]}], ";", 
+     RowBox[{
+      RowBox[{"numPrimes", "[", 
+       RowBox[{"a_", ",", "b_", ",", "n_"}], "]"}], ":=", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"PrimeQ", "[", 
+         RowBox[{"poly", "[", 
+          RowBox[{"a", ",", "b", ",", "n"}], "]"}], "]"}], ",", 
+        RowBox[{"numPrimes", "[", 
+         RowBox[{"a", ",", "b", ",", 
+          RowBox[{"n", "+", "1"}]}], "]"}], ",", "n"}], "]"}]}], ";", 
+     RowBox[{"max", "=", "0"}], ";", 
+     RowBox[{"Do", "[", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"numPrimes", "[", 
+           RowBox[{"a", ",", "b", ",", "0"}], "]"}], ">", "max"}], ",", " ", 
+         RowBox[{
+          RowBox[{"max", "=", 
+           RowBox[{"numPrimes", "[", 
+            RowBox[{"a", ",", "b", ",", "0"}], "]"}]}], ";", 
+          RowBox[{"ans", "=", 
+           RowBox[{"a", " ", "b"}]}], ";"}], ",", "Continue"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"a", ",", 
+         RowBox[{"-", "1000"}], ",", "1000"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"b", ",", "0", ",", "1000"}], "}"}]}], "]"}], ";", "ans"}]}], 
+   "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5197382636202283`*^9, 3.5197383545654306`*^9}, {
+   3.519738390170467*^9, 3.5197384449966025`*^9}, 3.5197387041354246`*^9, {
+   3.519739008515834*^9, 3.5197391006991067`*^9}, {3.519739803296293*^9, 
+   3.5197398047033734`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"19.765000000000004`", ",", 
+   RowBox[{"-", "59231"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.519739825010535*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"poly", ",", "numPrimes", ",", "max", ",", "ans"}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"poly", "=", 
+      RowBox[{"Compile", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"a", ",", "_Integer"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"b", ",", "_Integer"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"n", ",", "_Integer"}], "}"}]}], "}"}], ",", 
+        RowBox[{
+         RowBox[{"n", "^", "2"}], "+", 
+         RowBox[{"a", " ", "n"}], "+", "b"}]}], "]"}]}], ";", 
+     RowBox[{
+      RowBox[{"numPrimes", "[", 
+       RowBox[{"a_", ",", "b_", ",", "n_"}], "]"}], ":=", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"PrimeQ", "[", 
+         RowBox[{"poly", "[", 
+          RowBox[{"a", ",", "b", ",", "n"}], "]"}], "]"}], ",", 
+        RowBox[{"numPrimes", "[", 
+         RowBox[{"a", ",", "b", ",", 
+          RowBox[{"n", "+", "1"}]}], "]"}], ",", "n"}], "]"}]}], ";", 
+     RowBox[{"max", "=", "0"}], ";", 
+     RowBox[{"Do", "[", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"numPrimes", "[", 
+           RowBox[{"a", ",", "b", ",", "0"}], "]"}], ">", "max"}], ",", " ", 
+         RowBox[{
+          RowBox[{"max", "=", 
+           RowBox[{"numPrimes", "[", 
+            RowBox[{"a", ",", "b", ",", "0"}], "]"}]}], ";", 
+          RowBox[{"ans", "=", 
+           RowBox[{"a", " ", "b"}]}], ";"}], ",", "Continue"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"a", ",", 
+         RowBox[{"-", "1000"}], ",", "1000"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"b", ",", 
+         RowBox[{"Select", "[", 
+          RowBox[{
+           RowBox[{"Range", "[", 
+            RowBox[{"0", ",", "1000"}], "]"}], ",", "PrimeQ"}], "]"}]}], 
+        "}"}]}], "]"}], ";", "ans"}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5197382636202283`*^9, 3.5197383545654306`*^9}, {
+   3.519738390170467*^9, 3.5197384449966025`*^9}, 3.5197387041354246`*^9, {
+   3.519739008515834*^9, 3.5197391006991067`*^9}, {3.5197397151122494`*^9, 
+   3.519739734943383*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"9.001000000000015`", ",", 
+   RowBox[{"-", "59231"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.5197391589474382`*^9, 3.519739746178026*^9}]
+}, Open  ]],
+
+Cell["\<\
+Since we\[CloseCurlyQuote]ve made the function so much faster I wonder if the \
+Compile operation is really helping all that much, or if it may actually be \
+slowing us down because of the delay to compile the function before beginning \
+the loop.\
+\>", "Text",
+ CellChangeTimes->{{3.519739903641032*^9, 3.5197399429532804`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"numPrimes", ",", "max", ",", "ans"}], "}"}], ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"numPrimes", "[", 
+       RowBox[{"a_", ",", "b_", ",", "n_"}], "]"}], ":=", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"PrimeQ", "[", 
+         RowBox[{
+          RowBox[{"n", "^", "2"}], "+", 
+          RowBox[{"a", " ", "n"}], "+", "b"}], "]"}], ",", 
+        RowBox[{"numPrimes", "[", 
+         RowBox[{"a", ",", "b", ",", 
+          RowBox[{"n", "+", "1"}]}], "]"}], ",", "n"}], "]"}]}], ";", 
+     RowBox[{"max", "=", "0"}], ";", 
+     RowBox[{"Do", "[", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"numPrimes", "[", 
+           RowBox[{"a", ",", "b", ",", "0"}], "]"}], ">", "max"}], ",", " ", 
+         RowBox[{
+          RowBox[{"max", "=", 
+           RowBox[{"numPrimes", "[", 
+            RowBox[{"a", ",", "b", ",", "0"}], "]"}]}], ";", 
+          RowBox[{"ans", "=", 
+           RowBox[{"a", " ", "b"}]}], ";"}], ",", "Continue"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"a", ",", 
+         RowBox[{"-", "1000"}], ",", "1000"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"b", ",", 
+         RowBox[{"Select", "[", 
+          RowBox[{
+           RowBox[{"Range", "[", 
+            RowBox[{"0", ",", "1000"}], "]"}], ",", "PrimeQ"}], "]"}]}], 
+        "}"}]}], "]"}], ";", "ans"}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5197382636202283`*^9, 3.5197383545654306`*^9}, {
+   3.519738390170467*^9, 3.5197384449966025`*^9}, 3.5197387041354246`*^9, {
+   3.519739008515834*^9, 3.5197391006991067`*^9}, {3.5197397151122494`*^9, 
+   3.519739734943383*^9}, {3.519739864342785*^9, 3.5197398856520033`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"10.717000000000045`", ",", 
+   RowBox[{"-", "59231"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.5197391589474382`*^9, 3.519739746178026*^9, 
+  3.5197398976316886`*^9, 3.5197410760230885`*^9}]
+}, Open  ]],
+
+Cell["\<\
+Lets try using ParallelDo and see if that speeds things up at all. \
+\>", "Text",
+ CellChangeTimes->{{3.5197399525848317`*^9, 3.519740003592749*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"poly", ",", "numPrimes", ",", "max", ",", "ans"}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"poly", "=", 
+      RowBox[{"Compile", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"a", ",", "_Integer"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"b", ",", "_Integer"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"n", ",", "_Integer"}], "}"}]}], "}"}], ",", 
+        RowBox[{
+         RowBox[{"n", "^", "2"}], "+", 
+         RowBox[{"a", " ", "n"}], "+", "b"}]}], "]"}]}], ";", 
+     RowBox[{
+      RowBox[{"numPrimes", "[", 
+       RowBox[{"a_", ",", "b_", ",", "n_"}], "]"}], ":=", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"PrimeQ", "[", 
+         RowBox[{"poly", "[", 
+          RowBox[{"a", ",", "b", ",", "n"}], "]"}], "]"}], ",", 
+        RowBox[{"numPrimes", "[", 
+         RowBox[{"a", ",", "b", ",", 
+          RowBox[{"n", "+", "1"}]}], "]"}], ",", "n"}], "]"}]}], ";", 
+     RowBox[{"max", "=", "0"}], ";", 
+     RowBox[{"ParallelDo", "[", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"numPrimes", "[", 
+           RowBox[{"a", ",", "b", ",", "0"}], "]"}], ">", "max"}], ",", " ", 
+         RowBox[{
+          RowBox[{"max", "=", 
+           RowBox[{"numPrimes", "[", 
+            RowBox[{"a", ",", "b", ",", "0"}], "]"}]}], ";", 
+          RowBox[{"ans", "=", 
+           RowBox[{"a", " ", "b"}]}], ";"}], ",", "Continue"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"a", ",", 
+         RowBox[{"-", "1000"}], ",", "1000"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"b", ",", 
+         RowBox[{"Select", "[", 
+          RowBox[{
+           RowBox[{"Range", "[", 
+            RowBox[{"0", ",", "1000"}], "]"}], ",", "PrimeQ"}], "]"}]}], 
+        "}"}]}], "]"}], ";", "ans"}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5197382636202283`*^9, 3.5197383545654306`*^9}, {
+   3.519738390170467*^9, 3.5197384449966025`*^9}, 3.5197387041354246`*^9, {
+   3.519739008515834*^9, 3.5197391006991067`*^9}, {3.5197397151122494`*^9, 
+   3.519739734943383*^9}, {3.5197400155134315`*^9, 3.519740016472486*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.0780000000021642`", ",", "ans"}], "}"}]], "Output",
+ CellChangeTimes->{3.5197400217127857`*^9}]
+}, Open  ]],
+
+Cell["\<\
+That didn\[CloseCurlyQuote]t appear to work, I\[CloseCurlyQuote]m not sure \
+why. It could be because the logical tests get screwed up when doing more \
+than one operation at a time. Perhaps if we convert to using Table instead \
+then we can use ParallelTable.\
+\>", "Text",
+ CellChangeTimes->{{3.519740029465229*^9, 3.5197400641292114`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"poly", ",", "numPrimes"}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"poly", "=", 
+      RowBox[{"Compile", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"a", ",", "_Integer"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"b", ",", "_Integer"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"n", ",", "_Integer"}], "}"}]}], "}"}], ",", 
+        RowBox[{
+         RowBox[{"n", "^", "2"}], "+", 
+         RowBox[{"a", " ", "n"}], "+", "b"}]}], "]"}]}], ";", 
+     RowBox[{
+      RowBox[{"numPrimes", "[", 
+       RowBox[{"a_", ",", "b_", ",", "n_"}], "]"}], ":=", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"PrimeQ", "[", 
+         RowBox[{"poly", "[", 
+          RowBox[{"a", ",", "b", ",", "n"}], "]"}], "]"}], ",", 
+        RowBox[{"numPrimes", "[", 
+         RowBox[{"a", ",", "b", ",", 
+          RowBox[{"n", "+", "1"}]}], "]"}], ",", "n"}], "]"}]}], ";", 
+     RowBox[{"First", "[", 
+      RowBox[{"Sort", "[", 
+       RowBox[{
+        RowBox[{"DeleteCases", "[", 
+         RowBox[{
+          RowBox[{"Flatten", "[", 
+           RowBox[{
+            RowBox[{"Table", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"numPrimes", "[", 
+                 RowBox[{"a", ",", "b", ",", "0"}], "]"}], ",", 
+                RowBox[{"a", " ", "b"}]}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"a", ",", 
+                RowBox[{"-", "1000"}], ",", "1000"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"b", ",", 
+                RowBox[{"Select", "[", 
+                 RowBox[{
+                  RowBox[{"Range", "[", 
+                   RowBox[{"0", ",", "1000"}], "]"}], ",", "PrimeQ"}], 
+                 "]"}]}], "}"}]}], "]"}], ",", "1"}], "]"}], ",", "Null"}], 
+         "]"}], ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"#1", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], ">", 
+          RowBox[{"#2", "[", 
+           RowBox[{"[", "1", "]"}], "]"}]}], "&"}]}], "]"}], "]"}]}]}], "]"}],
+   "]"}]], "Input",
+ CellChangeTimes->{{3.5197382636202283`*^9, 3.5197383545654306`*^9}, {
+   3.519738390170467*^9, 3.5197384449966025`*^9}, 3.5197387041354246`*^9, {
+   3.519739008515834*^9, 3.5197391006991067`*^9}, {3.5197397151122494`*^9, 
+   3.519739734943383*^9}, {3.5197401252167053`*^9, 3.5197402596803966`*^9}, {
+   3.519740289963129*^9, 3.5197403276022816`*^9}, {3.5197403931150284`*^9, 
+   3.5197404036036286`*^9}, {3.519740467053258*^9, 3.519740475165722*^9}, {
+   3.519740613888656*^9, 3.519740620856055*^9}, {3.5197406830816135`*^9, 
+   3.5197407038818035`*^9}, {3.5197407593399754`*^9, 
+   3.5197407639542394`*^9}, {3.519740803370494*^9, 3.519740804450556*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"16.08399999999996`", ",", 
+   RowBox[{"{", 
+    RowBox[{"71", ",", 
+     RowBox[{"-", "59231"}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.5197403437532053`*^9, 3.519740421124631*^9, 
+  3.5197404888255033`*^9, 3.519740636785966*^9, 3.5197407309593525`*^9, 
+  3.519740785906495*^9, 3.5197408279599004`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"poly", ",", "numPrimes"}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"poly", "=", 
+      RowBox[{"Compile", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"a", ",", "_Integer"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"b", ",", "_Integer"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"n", ",", "_Integer"}], "}"}]}], "}"}], ",", 
+        RowBox[{
+         RowBox[{"n", "^", "2"}], "+", 
+         RowBox[{"a", " ", "n"}], "+", "b"}]}], "]"}]}], ";", 
+     RowBox[{
+      RowBox[{"numPrimes", "[", 
+       RowBox[{"a_", ",", "b_", ",", "n_"}], "]"}], ":=", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"PrimeQ", "[", 
+         RowBox[{"poly", "[", 
+          RowBox[{"a", ",", "b", ",", "n"}], "]"}], "]"}], ",", 
+        RowBox[{"numPrimes", "[", 
+         RowBox[{"a", ",", "b", ",", 
+          RowBox[{"n", "+", "1"}]}], "]"}], ",", "n"}], "]"}]}], ";", 
+     RowBox[{"First", "[", 
+      RowBox[{"Sort", "[", 
+       RowBox[{
+        RowBox[{"DeleteCases", "[", 
+         RowBox[{
+          RowBox[{"Flatten", "[", 
+           RowBox[{
+            RowBox[{"ParallelTable", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"numPrimes", "[", 
+                 RowBox[{"a", ",", "b", ",", "0"}], "]"}], ",", 
+                RowBox[{"a", " ", "b"}]}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"a", ",", 
+                RowBox[{"-", "1000"}], ",", "1000"}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"b", ",", 
+                RowBox[{"Select", "[", 
+                 RowBox[{
+                  RowBox[{"Range", "[", 
+                   RowBox[{"0", ",", "1000"}], "]"}], ",", "PrimeQ"}], 
+                 "]"}]}], "}"}]}], "]"}], ",", "1"}], "]"}], ",", "Null"}], 
+         "]"}], ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"#1", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], ">", 
+          RowBox[{"#2", "[", 
+           RowBox[{"[", "1", "]"}], "]"}]}], "&"}]}], "]"}], "]"}]}]}], "]"}],
+   "]"}]], "Input",
+ CellChangeTimes->{{3.5197382636202283`*^9, 3.5197383545654306`*^9}, {
+   3.519738390170467*^9, 3.5197384449966025`*^9}, 3.5197387041354246`*^9, {
+   3.519739008515834*^9, 3.5197391006991067`*^9}, {3.5197397151122494`*^9, 
+   3.519739734943383*^9}, {3.5197401252167053`*^9, 3.5197402596803966`*^9}, {
+   3.519740289963129*^9, 3.5197403276022816`*^9}, {3.5197403931150284`*^9, 
+   3.5197404036036286`*^9}, {3.519740467053258*^9, 3.519740475165722*^9}, {
+   3.519740613888656*^9, 3.519740620856055*^9}, {3.5197406830816135`*^9, 
+   3.5197407038818035`*^9}, {3.5197407593399754`*^9, 3.5197408106419096`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"13.915000000001282`", ",", 
+   RowBox[{"{", 
+    RowBox[{"71", ",", 
+     RowBox[{"-", "59231"}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.5197403437532053`*^9, 3.519740421124631*^9, 3.5197404888255033`*^9, 
+   3.519740636785966*^9, 3.5197407309593525`*^9, {3.519740785906495*^9, 
+   3.5197408115589623`*^9}, 3.5197408463419514`*^9}]
+}, Open  ]],
+
+Cell["\<\
+While ParallelTable produced results faster than Table, they both were still \
+slower than the Do loop used before.\
+\>", "Text",
+ CellChangeTimes->{{3.5197408861212273`*^9, 3.5197409140338235`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 647},
+WindowMargins->{{Automatic, 78}, {Automatic, 57}},
+FrontEndVersion->"8.0 for Microsoft Windows (32-bit) (February 23, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 169, 2, 83, "Title"],
+Cell[CellGroupData[{
+Cell[773, 28, 96, 1, 71, "Section"],
+Cell[872, 31, 2650, 90, 332, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3559, 126, 104, 1, 71, "Section"],
+Cell[CellGroupData[{
+Cell[3688, 131, 1860, 45, 92, "Input"],
+Cell[5551, 178, 305, 7, 30, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5905, 191, 97, 1, 71, "Section"],
+Cell[6005, 194, 240, 4, 47, "Text"],
+Cell[6248, 200, 533, 14, 31, "Input"],
+Cell[CellGroupData[{
+Cell[6806, 218, 166, 3, 31, "Input"],
+Cell[6975, 223, 70, 1, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7082, 229, 214, 5, 31, "Input"],
+Cell[7299, 236, 97, 1, 30, "Output"]
+}, Open  ]],
+Cell[7411, 240, 134, 2, 31, "Input"],
+Cell[CellGroupData[{
+Cell[7570, 246, 1535, 41, 92, "Input"],
+Cell[9108, 289, 228, 5, 30, "Output"]
+}, Open  ]],
+Cell[9351, 297, 178, 4, 29, "Text"],
+Cell[CellGroupData[{
+Cell[9554, 305, 2060, 55, 112, "Input"],
+Cell[11617, 362, 146, 4, 30, "Output"]
+}, Open  ]],
+Cell[11778, 369, 411, 7, 65, "Text"],
+Cell[CellGroupData[{
+Cell[12214, 380, 2084, 55, 112, "Input"],
+Cell[14301, 437, 156, 4, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14494, 446, 2229, 59, 112, "Input"],
+Cell[16726, 507, 179, 4, 30, "Output"]
+}, Open  ]],
+Cell[16920, 514, 339, 6, 47, "Text"],
+Cell[CellGroupData[{
+Cell[17284, 524, 1804, 46, 92, "Input"],
+Cell[19091, 572, 231, 5, 30, "Output"]
+}, Open  ]],
+Cell[19337, 580, 159, 3, 29, "Text"],
+Cell[CellGroupData[{
+Cell[19521, 587, 2285, 59, 132, "Input"],
+Cell[21809, 648, 137, 3, 30, "Output"]
+}, Open  ]],
+Cell[21961, 654, 352, 6, 47, "Text"],
+Cell[CellGroupData[{
+Cell[22338, 664, 2886, 72, 152, "Input"],
+Cell[25227, 738, 353, 8, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25617, 751, 2844, 71, 172, "Input"],
+Cell[28464, 824, 385, 9, 30, "Output"]
+}, Open  ]],
+Cell[28864, 836, 209, 4, 29, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
