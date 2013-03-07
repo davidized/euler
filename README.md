@@ -11,7 +11,7 @@ Standard folder structure for a problem:
   - prob###/prob###.*           Final solution for the problem - if revised/optimized at a later date a letter will be added after the problem number
   - prob###/prob###work.nb      Scratch notebook for developing a Mathematica solution. May contain notes, new functions, and rough draft attempts.
   - prob###/prob###func.py		Functions created to solve the problem pulled out to be available for later use.
-  - prob###/prob###out			Saved output
+  - prob###/prob###out.*			Saved output
   - prob###/prob###notes		Notes on the problem that don't seem to belong elsewhere
 
 Other Files
