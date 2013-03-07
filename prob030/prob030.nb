@@ -1,0 +1,430 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     12611,        421]
+NotebookOptionsPosition[     11042,        361]
+NotebookOutlinePosition[     11387,        376]
+CellTagsIndexPosition[     11344,        373]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Problem 30", "Title",
+ CellChangeTimes->{{3.518913212440551*^9, 3.518913219629962*^9}, {
+   3.5195348094038496`*^9, 3.5195348183003583`*^9}, 3.519741890394668*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Problem", "Section",
+ CellChangeTimes->{{3.519741905688543*^9, 3.5197419064005833`*^9}}],
+
+Cell[TextData[{
+ "Surprisingly there are only three numbers that can be written as the sum of \
+fourth powers of their digits:\n\n",
+ Cell[BoxData[{
+  FormBox[
+   RowBox[{"1634", " ", "=", " ", 
+    RowBox[{
+     SuperscriptBox["1", "4"], "+", 
+     SuperscriptBox["6", "4"], "+", 
+     SuperscriptBox["3", "4"], "+", 
+     SuperscriptBox["4", "4"]}]}], TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{"8208", " ", "=", " ", 
+    RowBox[{
+     SuperscriptBox["8", "4"], "+", 
+     SuperscriptBox["2", "4"], "+", 
+     SuperscriptBox["0", "4"], "+", 
+     SuperscriptBox["8", "4"]}]}], TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{"9474", "=", 
+    RowBox[{
+     SuperscriptBox["9", "4"], "+", 
+     SuperscriptBox["4", "4"], "+", 
+     SuperscriptBox["7", "4"], "+", 
+     SuperscriptBox["4", "4"]}]}], TraditionalForm]}]],
+ "\nAs ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"1", "=", 
+    SuperscriptBox["1", "4"]}], TraditionalForm]]],
+ " is not a sum it is not included.\n\nThe sum of these numbers is ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"1634", "+", "8208", "+", "9474"}], "=", "19316"}], 
+   TraditionalForm]]],
+ ".\n\nFind the sum of all the numbers that can be written as the sum of \
+fifth powers of their digits."
+}], "Text",
+ CellChangeTimes->{{3.5189132368799486`*^9, 3.5189133626801443`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Original Solution", "Section",
+ CellChangeTimes->{{3.5197418977300873`*^9, 3.5197418998412085`*^9}}],
+
+Cell[TextData[{
+ "The upper bound to test can be calculated by looking at ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["n9", "5"], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ". Since it only produces a 6 digit number when ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"n", "=", "7"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " we can restrict our search to a maximum of 354294 because that is the \
+result when ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"n", "=", "6"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.51974381640983*^9, 3.5197439028197727`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"n", ",", 
+     RowBox[{"n", " ", 
+      RowBox[{"9", "^", "5"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"n", ",", "1", ",", "10"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.5197437605056324`*^9, 3.5197437823998847`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1", ",", "59049"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "118098"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "177147"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "236196"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5", ",", "295245"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"6", ",", "354294"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"7", ",", "413343"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"8", ",", "472392"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"9", ",", "531441"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"10", ",", "590490"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.5197437828999133`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", "ans", "}"}], ",", 
+    RowBox[{
+     RowBox[{"ans", "=", "0"}], ";", 
+     RowBox[{"Do", "[", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Total", "[", 
+           RowBox[{"Power", "[", 
+            RowBox[{
+             RowBox[{"IntegerDigits", "[", "i", "]"}], ",", "5"}], "]"}], 
+           "]"}], " ", "\[Equal]", " ", "i"}], ",", 
+         RowBox[{"ans", " ", "=", " ", 
+          RowBox[{"ans", "+", "i"}]}], ",", " ", "Continue"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", "354294"}], "}"}]}], "]"}], ";", 
+     "ans"}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.518913055896597*^9, 3.518913196272626*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"4.665000000000005`", ",", "443840"}], "}"}]], "Output",
+ CellChangeTimes->{{3.518913150781024*^9, 3.518913164852829*^9}, 
+   3.5189132011669064`*^9, 3.5197419334281297`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Revision/Optimization", "Section",
+ CellChangeTimes->{{3.519741917224203*^9, 3.5197419206894007`*^9}}],
+
+Cell["\<\
+Convert to Table instead of a Do loop.\
+\>", "Text",
+ CellChangeTimes->{{3.5197420135537124`*^9, 3.519742023441278*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Total", "[", 
+   RowBox[{"DeleteCases", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Total", "[", 
+           RowBox[{"Power", "[", 
+            RowBox[{
+             RowBox[{"IntegerDigits", "[", "i", "]"}], ",", "5"}], "]"}], 
+           "]"}], " ", "\[Equal]", " ", "i"}], ",", "i", ",", " ", "Null"}], 
+        "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", "354294"}], "}"}]}], "]"}], ",", "Null"}],
+     "]"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.518913055896597*^9, 3.518913196272626*^9}, {
+  3.5197419676050844`*^9, 3.5197420034101324`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"4.290000000000005`", ",", "443840"}], "}"}]], "Output",
+ CellChangeTimes->{3.5197420120216246`*^9}]
+}, Open  ]],
+
+Cell["\<\
+Table executed a little faster, I wonder what ParallelTable will do.\
+\>", "Text",
+ CellChangeTimes->{{3.519742048177693*^9, 3.519742052832959*^9}, {
+  3.5197423187701697`*^9, 3.519742330433837*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Total", "[", 
+   RowBox[{"DeleteCases", "[", 
+    RowBox[{
+     RowBox[{"ParallelTable", "[", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Total", "[", 
+           RowBox[{"Power", "[", 
+            RowBox[{
+             RowBox[{"IntegerDigits", "[", "i", "]"}], ",", "5"}], "]"}], 
+           "]"}], " ", "\[Equal]", " ", "i"}], ",", "i", ",", " ", "Null"}], 
+        "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", "354294"}], "}"}]}], "]"}], ",", "Null"}],
+     "]"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.518913055896597*^9, 3.518913196272626*^9}, {
+  3.5197419676050844`*^9, 3.5197420034101324`*^9}, {3.519742061180436*^9, 
+  3.519742062179494*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.48300000000053755`", ",", "443840"}], "}"}]], "Output",
+ CellChangeTimes->{3.519742065937709*^9}]
+}, Open  ]],
+
+Cell["\<\
+Select from a Range vs DeleteCase Null.\
+\>", "Text",
+ CellChangeTimes->{{3.5197425909287367`*^9, 3.519742602097375*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Total", "[", 
+   RowBox[{"Select", "[", 
+    RowBox[{
+     RowBox[{"Range", "[", 
+      RowBox[{"1", ",", "354294"}], "]"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Total", "[", 
+        RowBox[{"Power", "[", 
+         RowBox[{
+          RowBox[{"IntegerDigits", "[", "#", "]"}], ",", "5"}], "]"}], "]"}], 
+       "\[Equal]", "#"}], "&"}]}], "]"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5197426056225767`*^9, 3.519742671497345*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"4.274000000000012`", ",", "443840"}], "}"}]], "Output",
+ CellChangeTimes->{{3.519742658441598*^9, 3.519742676877652*^9}}]
+}, Open  ]],
+
+Cell["\<\
+Not much faster than the original solution. I wonder if we can Parallelize it \
+to speed things up a bit.\
+\>", "Text",
+ CellChangeTimes->{{3.5197427459856052`*^9, 3.519742770233992*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Parallelize", "[", 
+   RowBox[{"Total", "[", 
+    RowBox[{"Select", "[", 
+     RowBox[{
+      RowBox[{"Range", "[", 
+       RowBox[{"1", ",", "354294"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Total", "[", 
+         RowBox[{"Power", "[", 
+          RowBox[{
+           RowBox[{"IntegerDigits", "[", "#", "]"}], ",", "5"}], "]"}], "]"}],
+         "\[Equal]", "#"}], "&"}]}], "]"}], "]"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5197426056225767`*^9, 3.5197426969688015`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Parallelize", "::", "nopar1"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], \
+"\<\"\[NoBreak]\\!\\(Total[\\(\\(Select[\\(\\(\\(\\(Range[\\(\\(1, \
+354294\\)\\)]\\)\\), \
+\\(\\(\\(\\(\\(\\(Total[\\(\\(\\(IntegerDigits[\\(\\(Slot[\\(\\(\
+\[LeftSkeleton] 1 \[RightSkeleton]\\)\\)]\\)\\)]\\)\\^5\\)\\)]\\)\\) \[Equal] \
+#1\\)\\) &\\)\\)\\)\\)]\\)\\)]\\)\[NoBreak] cannot be parallelized; \
+proceeding with sequential evaluation. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/Parallelize\\\", ButtonNote -> \
+\\\"Parallelize::nopar1\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.519742698040863*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"4.587000000000037`", ",", "443840"}], "}"}]], "Output",
+ CellChangeTimes->{3.519742702469116*^9}]
+}, Open  ]],
+
+Cell["\<\
+I guess Parallelize can\[CloseCurlyQuote]t go there, maybe we need to move it \
+to around the Select.\
+\>", "Text",
+ CellChangeTimes->{{3.519742776977378*^9, 3.519742792353257*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Total", "[", 
+   RowBox[{"Parallelize", "[", 
+    RowBox[{"Select", "[", 
+     RowBox[{
+      RowBox[{"Range", "[", 
+       RowBox[{"1", ",", "354294"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Total", "[", 
+         RowBox[{"Power", "[", 
+          RowBox[{
+           RowBox[{"IntegerDigits", "[", "#", "]"}], ",", "5"}], "]"}], "]"}],
+         "\[Equal]", "#"}], "&"}]}], "]"}], "]"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5197426056225767`*^9, 3.519742671497345*^9}, {
+  3.5197427174819746`*^9, 3.519742722321252*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.18699999999758893`", ",", "443840"}], "}"}]], "Output",
+ CellChangeTimes->{{3.519742658441598*^9, 3.519742676877652*^9}, 
+   3.51974272561044*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 655},
+WindowMargins->{{Automatic, 70}, {Automatic, 12}},
+FrontEndVersion->"8.0 for Microsoft Windows (32-bit) (February 23, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 169, 2, 83, "Title"],
+Cell[CellGroupData[{
+Cell[773, 28, 94, 1, 71, "Section"],
+Cell[870, 31, 1352, 39, 209, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2259, 75, 106, 1, 71, "Section"],
+Cell[2368, 78, 625, 19, 47, "Text"],
+Cell[CellGroupData[{
+Cell[3018, 101, 313, 9, 31, "Input"],
+Cell[3334, 112, 737, 23, 50, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4108, 140, 794, 22, 72, "Input"],
+Cell[4905, 164, 213, 4, 30, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5167, 174, 108, 1, 71, "Section"],
+Cell[5278, 177, 130, 3, 29, "Text"],
+Cell[CellGroupData[{
+Cell[5433, 184, 730, 20, 72, "Input"],
+Cell[6166, 206, 139, 3, 30, "Output"]
+}, Open  ]],
+Cell[6320, 212, 209, 4, 29, "Text"],
+Cell[CellGroupData[{
+Cell[6554, 220, 787, 21, 92, "Input"],
+Cell[7344, 243, 139, 3, 30, "Output"]
+}, Open  ]],
+Cell[7498, 249, 131, 3, 29, "Text"],
+Cell[CellGroupData[{
+Cell[7654, 256, 501, 14, 31, "Input"],
+Cell[8158, 272, 161, 3, 30, "Output"]
+}, Open  ]],
+Cell[8334, 278, 197, 4, 29, "Text"],
+Cell[CellGroupData[{
+Cell[8556, 286, 553, 15, 72, "Input"],
+Cell[9112, 303, 726, 15, 62, "Message"],
+Cell[9841, 320, 137, 3, 30, "Output"]
+}, Open  ]],
+Cell[9993, 326, 191, 4, 29, "Text"],
+Cell[CellGroupData[{
+Cell[10209, 334, 602, 16, 72, "Input"],
+Cell[10814, 352, 188, 4, 30, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
