@@ -1,0 +1,119 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      3173,        109]
+NotebookOptionsPosition[      2681,         86]
+NotebookOutlinePosition[      3022,        101]
+CellTagsIndexPosition[      2979,         98]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Problem 40", "Section",
+ CellChangeTimes->{{3.5189190808392043`*^9, 3.518919082359291*^9}}],
+
+Cell[TextData[{
+ "An irrational decimal fraction is created by concatenating the positive \
+integers:\n\n",
+ StyleBox["0.123456789101112131415161718192021...\n", "Output"],
+ "\nIt can be seen that the 12th digit of the fractional part is 1.\n\nIf dn \
+represents the nth digit of the fractional part, find the value of the \
+following expression.\n\n",
+ StyleBox["d1 * d10 * d100 * d1000 * d10000 * d100000 * d1000000", "Input"]
+}], "Text",
+ CellChangeTimes->{
+  3.5189190958000603`*^9, {3.518919135926355*^9, 3.518919144862866*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsection",
+ CellChangeTimes->{{3.571610793837837*^9, 3.571610794660884*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", "num", "}"}], ",", 
+    RowBox[{
+     RowBox[{"num", " ", "=", 
+      RowBox[{"Flatten", "[", 
+       RowBox[{"IntegerDigits", "[", 
+        RowBox[{"Table", "[", 
+         RowBox[{"i", ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", "185185"}], "}"}]}], "]"}], "]"}], 
+       "]"}]}], ";", " ", 
+     RowBox[{"Times", "[", 
+      RowBox[{
+       RowBox[{"num", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], ",", 
+       RowBox[{"num", "[", 
+        RowBox[{"[", "10", "]"}], "]"}], ",", 
+       RowBox[{"num", "[", 
+        RowBox[{"[", "100", "]"}], "]"}], ",", 
+       RowBox[{"num", "[", 
+        RowBox[{"[", "1000", "]"}], "]"}], ",", 
+       RowBox[{"num", "[", 
+        RowBox[{"[", "10000", "]"}], "]"}], ",", 
+       RowBox[{"num", "[", 
+        RowBox[{"[", "100000", "]"}], "]"}], ",", 
+       RowBox[{"num", "[", 
+        RowBox[{"[", "1000000", "]"}], "]"}]}], "]"}]}]}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.518918938868084*^9, 3.5189189482876225`*^9}, {
+  3.5189189980764704`*^9, 3.518919056627819*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1.2480000000000007`", ",", "210"}], "}"}]], "Output",
+ CellChangeTimes->{3.518919058878948*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 637},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"8.0 for Microsoft Windows (32-bit) (October 6, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 97, 1, 71, "Section"],
+Cell[679, 25, 533, 10, 174, "Text"],
+Cell[CellGroupData[{
+Cell[1237, 39, 96, 1, 36, "Subsection"],
+Cell[CellGroupData[{
+Cell[1358, 44, 1145, 32, 72, "Input"],
+Cell[2506, 78, 135, 3, 30, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
