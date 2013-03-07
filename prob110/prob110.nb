@@ -1,0 +1,140 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      3511,        131]
+NotebookOptionsPosition[      2842,        101]
+NotebookOutlinePosition[      3187,        116]
+CellTagsIndexPosition[      3144,        113]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Problem 110", "Title",
+ CellChangeTimes->{{3.528480874965191*^9, 3.528480876668288*^9}}],
+
+Cell["Problem", "Section",
+ CellChangeTimes->{{3.5284808824736204`*^9, 3.5284808831706605`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution to Problem 108", "Section",
+ CellChangeTimes->{{3.5284808881879473`*^9, 3.5284808926892047`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Catch", "[", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"Length", "[", 
+            RowBox[{"Divisors", "[", 
+             RowBox[{"n", "^", "2"}], "]"}], "]"}], "+", "1"}], ")"}], "/", 
+         "2"}], ">", "1000"}], ",", 
+       RowBox[{"Throw", "[", "n", "]"}], ",", "Continue"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", "1", ",", "10000000"}], "}"}]}], "]"}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.528480489491143*^9, 3.528480535839794*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"17.877000000000017`", ",", "180180"}], "}"}]], "Output",
+ CellChangeTimes->{{3.5284805153156204`*^9, 3.528480555645927*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Work", "Section",
+ CellChangeTimes->{{3.528480897617487*^9, 3.5284808979345045`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Catch", "[", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"Length", "[", 
+            RowBox[{"Divisors", "[", 
+             RowBox[{"n", "^", "2"}], "]"}], "]"}], "+", "1"}], ")"}], "/", 
+         "2"}], ">", "4000000"}], ",", 
+       RowBox[{"Throw", "[", "n", "]"}], ",", "Continue"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", "1", ",", "10000000"}], "}"}]}], "]"}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.528480489491143*^9, 3.528480535839794*^9}, {
+  3.528481000587376*^9, 3.5284810034265385`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"3380.62`", ",", "Null"}], "}"}]], "Output",
+ CellChangeTimes->{{3.5284805153156204`*^9, 3.528480555645927*^9}, 
+   3.5284988469273643`*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 515},
+WindowMargins->{{24, Automatic}, {Automatic, 30}},
+FrontEndVersion->"8.0 for Microsoft Windows (32-bit) (February 23, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 94, 1, 83, "Title"],
+Cell[676, 25, 96, 1, 71, "Section"],
+Cell[CellGroupData[{
+Cell[797, 30, 112, 1, 41, "Section"],
+Cell[CellGroupData[{
+Cell[934, 35, 650, 19, 52, "Input"],
+Cell[1587, 56, 164, 3, 30, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1800, 65, 91, 1, 71, "Section"],
+Cell[CellGroupData[{
+Cell[1916, 70, 704, 20, 52, "Input"],
+Cell[2623, 92, 179, 4, 30, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
