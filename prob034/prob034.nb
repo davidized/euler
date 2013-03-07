@@ -1,0 +1,216 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      5960,        207]
+NotebookOptionsPosition[      5029,        168]
+NotebookOutlinePosition[      5374,        183]
+CellTagsIndexPosition[      5331,        180]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Problem 34", "Title",
+ CellChangeTimes->{{3.518913827629738*^9, 3.5189138299098682`*^9}, {
+   3.519534860619779*^9, 3.5195348651390376`*^9}, 3.519760473149786*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Problem", "Section",
+ CellChangeTimes->{{3.519760530857086*^9, 3.519760532388174*^9}}],
+
+Cell[TextData[{
+ "145 is a curious number, as ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"1", "!"}], "+", 
+     RowBox[{"4", "!"}], "+", 
+     RowBox[{"5", "!"}]}], " ", "=", " ", 
+    RowBox[{
+     RowBox[{"1", "+", "24", "+", "120"}], "=", "145"}]}], TraditionalForm]]],
+ "\n\nFind the sum of all numbers which are equal to the sum of the factorial \
+of their digits.\n\nNote : as ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"1", "!"}], " ", "=", " ", "1"}], TraditionalForm]]],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"2", "!"}], " ", "=", "2"}], TraditionalForm]]],
+ " are not sums they are not included."
+}], "Text",
+ CellChangeTimes->{{3.5189138417355447`*^9, 3.5189139189409604`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Original Solution", "Section",
+ CellChangeTimes->{{3.519760435737646*^9, 3.5197604396508694`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", "ans", "}"}], ",", 
+    RowBox[{
+     RowBox[{"ans", "=", 
+      RowBox[{"{", "}"}]}], ";", 
+     RowBox[{"Do", "[", " ", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Total", "[", 
+           RowBox[{"Factorial", "[", 
+            RowBox[{"IntegerDigits", "[", "i", "]"}], "]"}], "]"}], 
+          "\[Equal]", "i"}], ",", " ", 
+         RowBox[{"AppendTo", "[", 
+          RowBox[{"ans", ",", "i"}], "]"}], ",", "Continue"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "3", ",", "100000"}], "}"}]}], "]"}], ";", " ", 
+     RowBox[{"Total", "[", "ans", "]"}]}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.518913597118553*^9, 3.5189136982673388`*^9}, {
+  3.518913729643133*^9, 3.518913800446183*^9}, {3.518913888416215*^9, 
+  3.5189138885512223`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"2.138000000000026`", ",", "40730"}], "}"}]], "Output",
+ CellChangeTimes->{{3.5189136259522023`*^9, 3.51891363954698*^9}, 
+   3.518913808126622*^9, {3.5189139291275434`*^9, 3.518913941359243*^9}, 
+   3.5197611018297443`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Revised/Optimized Solution", "Section",
+ CellChangeTimes->{{3.5197605605067825`*^9, 3.5197605645030107`*^9}}],
+
+Cell["Convert Do/AppendTo to Table.", "Text",
+ CellChangeTimes->{{3.519760570000325*^9, 3.519760573195508*^9}, {
+  3.519760966629011*^9, 3.5197609808488245`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Total", "[", 
+   RowBox[{"DeleteCases", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Total", "[", 
+           RowBox[{"Factorial", "[", 
+            RowBox[{"IntegerDigits", "[", "i", "]"}], "]"}], "]"}], 
+          "\[Equal]", "i"}], ",", "i", ",", "Null"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "3", ",", "100000"}], "}"}]}], "]"}], ",", "Null"}],
+     "]"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.519761042625358*^9, 3.519761093448265*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"2.073999999999996`", ",", "40730"}], "}"}]], "Output",
+ CellChangeTimes->{3.5197610967094517`*^9}]
+}, Open  ]],
+
+Cell["Parallelize table", "Text",
+ CellChangeTimes->{{3.519761109065158*^9, 3.5197611176756506`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Total", "[", 
+   RowBox[{"DeleteCases", "[", 
+    RowBox[{
+     RowBox[{"ParallelTable", "[", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Total", "[", 
+           RowBox[{"Factorial", "[", 
+            RowBox[{"IntegerDigits", "[", "i", "]"}], "]"}], "]"}], 
+          "\[Equal]", "i"}], ",", "i", ",", "Null"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "3", ",", "100000"}], "}"}]}], "]"}], ",", "Null"}],
+     "]"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.519761042625358*^9, 3.51976112343198*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.2809999999994305`", ",", "40730"}], "}"}]], "Output",
+ CellChangeTimes->{3.5197611259021215`*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 523},
+WindowMargins->{{44, Automatic}, {Automatic, 15}},
+FrontEndVersion->"8.0 for Microsoft Windows (32-bit) (February 23, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 169, 2, 83, "Title"],
+Cell[CellGroupData[{
+Cell[773, 28, 92, 1, 71, "Section"],
+Cell[868, 31, 744, 24, 101, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1649, 60, 104, 1, 71, "Section"],
+Cell[CellGroupData[{
+Cell[1778, 65, 916, 24, 72, "Input"],
+Cell[2697, 91, 263, 5, 30, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3009, 102, 115, 1, 71, "Section"],
+Cell[3127, 105, 162, 2, 29, "Text"],
+Cell[CellGroupData[{
+Cell[3314, 111, 622, 17, 72, "Input"],
+Cell[3939, 130, 138, 3, 30, "Output"]
+}, Open  ]],
+Cell[4092, 136, 101, 1, 29, "Text"],
+Cell[CellGroupData[{
+Cell[4218, 141, 629, 17, 92, "Input"],
+Cell[4850, 160, 139, 3, 30, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
