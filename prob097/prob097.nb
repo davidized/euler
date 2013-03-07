@@ -1,0 +1,110 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      2783,        100]
+NotebookOptionsPosition[      2289,         77]
+NotebookOutlinePosition[      2632,         92]
+CellTagsIndexPosition[      2589,         89]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Problem 97", "Section",
+ CellChangeTimes->{{3.5190448326643763`*^9, 3.5190448451380897`*^9}}],
+
+Cell[TextData[{
+ "The first known prime found to exceed one million digits was discovered in \
+1999, and is a Mersenne prime of the form ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["2", "6972593"], "-", "1"}], TraditionalForm]]],
+ "; it contains exactly 2,098,960 digits.Subsequently other Mersenne primes, \
+of the form ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["2", "p"], "-", "1"}], TraditionalForm]]],
+ ", have been found which contain more digits. However, in 2004 there was \
+found a massive non - Mersenne prime which contains 2,357,207 digits : ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"28433", " ", 
+     SuperscriptBox["2", "7830457"]}], "+", "1"}], TraditionalForm]]],
+ ".\n\nFind the last ten digits of this prime number."
+}], "Text",
+ CellChangeTimes->{{3.5190451622462273`*^9, 3.519045251913356*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsection",
+ CellChangeTimes->{{3.5716144059904404`*^9, 3.5716144068844914`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"FromDigits", "[", 
+   RowBox[{"Take", "[", 
+    RowBox[{
+     RowBox[{"IntegerDigits", "[", 
+      RowBox[{
+       RowBox[{"28433", 
+        RowBox[{"Power", "[", 
+         RowBox[{"2", ",", "7830457"}], "]"}]}], "+", "1"}], "]"}], ",", 
+     RowBox[{"-", "10"}]}], "]"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5190450665137515`*^9, 3.51904511123831*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"2.9330000000004217`", ",", "8739992577"}], "}"}]], "Output",
+ CellChangeTimes->{3.519045114944522*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 637},
+WindowMargins->{{240, Automatic}, {Automatic, 0}},
+FrontEndVersion->"8.0 for Microsoft Windows (32-bit) (October 6, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 99, 1, 71, "Section"],
+Cell[681, 25, 860, 22, 119, "Text"],
+Cell[CellGroupData[{
+Cell[1566, 51, 100, 1, 36, "Subsection"],
+Cell[CellGroupData[{
+Cell[1691, 56, 413, 11, 31, "Input"],
+Cell[2107, 69, 142, 3, 30, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
