@@ -1,0 +1,207 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      6453,        197]
+NotebookOptionsPosition[      5548,        161]
+NotebookOutlinePosition[      5891,        176]
+CellTagsIndexPosition[      5848,        173]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Problem 70 - consolidate", "Section",
+ CellChangeTimes->{{3.5191456701299496`*^9, 3.519145671520029*^9}, {
+  3.5195351808570957`*^9, 3.5195351833032355`*^9}}],
+
+Cell[TextData[{
+ "Euler\[CloseCurlyQuote]s Totient function, \[CurlyPhi](n) [sometimes called \
+the phi function], is used to determine the number of positive numbers less \
+than or equal to n which are relatively prime to n. For example, as 1, 2, 4, \
+5, 7, and 8, are all less than nine and relatively prime to nine, \
+\[CurlyPhi](9)=6.\n\nThe number 1 is considered to be relatively prime to \
+every positive number, so \[CurlyPhi](1)=1.\n\nInterestingly, \
+\[CurlyPhi](87109)=79180, and it can be seen that 87109 is a permutation of \
+79180.\n\nFind the value of n, ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"1", "<", "n", "<", 
+    SuperscriptBox["10", "7"]}], TraditionalForm]]],
+ ", for which \[CurlyPhi](n) is a permutation of n and the ratio \
+n/\[CurlyPhi](n) produces a minimum."
+}], "Text",
+ CellChangeTimes->{{3.519145682570661*^9, 3.5191457128483925`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsection",
+ CellChangeTimes->{{3.519145731453457*^9, 3.519145733452571*^9}, 
+   3.571613508807124*^9}],
+
+Cell["\<\
+I solved this problem while working through the components of it. I haven\
+\[CloseCurlyQuote]t figured out how to best combine it into one operation, \
+and even if I do it is going to need some serious optimization as the table \
+function alone takes 6 minutes or so to calculate. Looking at the other \
+solutions posted on the Project Euler website most people seemed to have \
+brute forced this in a similar fashion, although there was a lot of \
+discussion about how to optimize the search. I may go back later and see if \
+there is something I could do to improve my results.\
+\>", "Text",
+ CellChangeTimes->{{3.5191477875030565`*^9, 3.5191479186555576`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"permutationQ", "[", 
+   RowBox[{"x_Integer", ",", "y_Integer"}], "]"}], " ", ":=", 
+  RowBox[{
+   RowBox[{"Sort", "[", 
+    RowBox[{"IntegerDigits", "[", "x", "]"}], "]"}], "\[Equal]", 
+   RowBox[{"Sort", "[", 
+    RowBox[{"IntegerDigits", "[", "y", "]"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.519144070432452*^9, 3.519144105785474*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{
+   RowBox[{"test", "=", 
+    RowBox[{"DeleteCases", "[", 
+     RowBox[{
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"permutationQ", "[", 
+           RowBox[{"n", ",", 
+            RowBox[{"EulerPhi", "[", "n", "]"}]}], "]"}], ",", "n", ",", 
+          "Null"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"n", ",", "1", ",", "10000000"}], "}"}]}], "]"}], ",", 
+      "Null"}], "]"}]}], ";"}], "]"}]], "Input",
+ CellChangeTimes->{{3.519144204333111*^9, 3.5191442630434685`*^9}, {
+  3.519144521734265*^9, 3.5191445320098524`*^9}, {3.5191457784921474`*^9, 
+  3.519145801029436*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"378.09999999999997`", ",", "Null"}], "}"}]], "Output",
+ CellChangeTimes->{3.5191442070452657`*^9, 3.5191445177220354`*^9, 
+  3.519144937254031*^9, 3.519146218933339*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"test", "=", 
+   RowBox[{"Delete", "[", 
+    RowBox[{"test", ",", "1"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.5191451225526295`*^9, 3.5191451421107483`*^9}, {
+  3.519145250764963*^9, 3.519145295101499*^9}, {3.5191463183460255`*^9, 
+  3.5191463285286074`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"test2", "=", " ", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"Divide", "[", 
+      RowBox[{"n", ",", 
+       RowBox[{"EulerPhi", "[", "n", "]"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", "test"}], "}"}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.5191451556655235`*^9, 3.519145197855937*^9}, {
+  3.5191463399612617`*^9, 3.5191463439444895`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Position", "[", 
+  RowBox[{"test2", ",", 
+   RowBox[{"Min", "[", "test2", "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.5191452062284155`*^9, 3.519145239556322*^9}, {
+  3.5191463476717024`*^9, 3.5191463535880413`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", "1769", "}"}], "}"}]], "Output",
+ CellChangeTimes->{{3.5191452158939686`*^9, 3.5191452374142*^9}, 
+   3.519145300573812*^9, 3.5191463628635716`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"test", "[", 
+  RowBox[{"[", "1769", "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5191453055330954`*^9, 3.519145310297368*^9}, 
+   3.519146369752966*^9}],
+
+Cell[BoxData["8319823"], "Output",
+ CellChangeTimes->{3.5191453114574347`*^9, 3.5191463708060255`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"Clear", "[", 
+  RowBox[{"permutationQ", ",", "test", ",", "test2"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5191459371232204`*^9, 3.519145954297203*^9}, {
+  3.519146334647958*^9, 3.5191463458936005`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 637},
+WindowMargins->{{216, Automatic}, {8, Automatic}},
+FrontEndVersion->"8.0 for Microsoft Windows (32-bit) (October 6, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 164, 2, 71, "Section"],
+Cell[746, 26, 868, 16, 173, "Text"],
+Cell[CellGroupData[{
+Cell[1639, 46, 122, 2, 36, "Subsection"],
+Cell[1764, 50, 673, 10, 101, "Text"],
+Cell[2440, 62, 378, 9, 52, "Input"],
+Cell[CellGroupData[{
+Cell[2843, 75, 703, 19, 72, "Input"],
+Cell[3549, 96, 209, 4, 30, "Output"]
+}, Open  ]],
+Cell[3773, 103, 304, 7, 31, "Input"],
+Cell[4080, 112, 414, 11, 31, "Input"],
+Cell[CellGroupData[{
+Cell[4519, 127, 244, 5, 31, "Input"],
+Cell[4766, 134, 192, 4, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4995, 143, 177, 4, 31, "Input"],
+Cell[5175, 149, 102, 1, 30, "Output"]
+}, Open  ]],
+Cell[5292, 153, 228, 4, 31, "Input"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
