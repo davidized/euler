@@ -1,0 +1,273 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      7806,        263]
+NotebookOptionsPosition[      7081,        232]
+NotebookOutlinePosition[      7425,        247]
+CellTagsIndexPosition[      7382,        244]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Problem 65", "Section",
+ CellChangeTimes->{{3.5191428616633143`*^9, 3.51914286456548*^9}}],
+
+Cell[TextData[{
+ "The square root of 2 can be written as an infinite continued fraction.\n\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SqrtBox["2"], "=", 
+    RowBox[{"1", "+", 
+     FractionBox["1", 
+      RowBox[{"2", "+", 
+       FractionBox["1", 
+        RowBox[{"2", "+", 
+         FractionBox["1", 
+          RowBox[{"2", "+", 
+           FractionBox["1", 
+            RowBox[{
+             RowBox[{"2", "+"}], "..."}]]}]]}]]}]]}]}], TraditionalForm]]],
+ "\n2 = 1 +\t\n\nThe infinite continued fraction can be written, ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SqrtBox["2"], "=", 
+    RowBox[{"[", 
+     RowBox[{"1", ";", 
+      RowBox[{"(", "2", ")"}]}], "]"}]}], TraditionalForm]]],
+ ", (2) indicates that 2 repeats ad infinitum. In a similar way, ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SqrtBox["23"], "=", 
+    RowBox[{"[", 
+     RowBox[{"4", ";", 
+      RowBox[{"(", 
+       RowBox[{"1", ",", "3", ",", "1", ",", "8"}], ")"}]}], "]"}]}], 
+   TraditionalForm]]],
+ ".\n\nIt turns out that the sequence of partial values of continued \
+fractions for square roots provide the best rational approximations. Let us \
+consider the convergents for ",
+ Cell[BoxData[
+  FormBox[
+   SqrtBox["2"], TraditionalForm]]],
+ ".\n\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"1", "+", 
+     FractionBox["1", "2"]}], "=", 
+    FractionBox["3", "2"]}], TraditionalForm]]],
+ "\n\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"1", "+", 
+     FractionBox["1", 
+      RowBox[{"2", "+", 
+       FractionBox["1", "2"]}]]}], "=", 
+    FractionBox["7", "5"]}], TraditionalForm]]],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"1", "+", 
+     FractionBox["1", 
+      RowBox[{"2", "+", 
+       FractionBox["1", 
+        RowBox[{"2", "+", 
+         FractionBox["1", "2"]}]]}]]}], "=", 
+    FractionBox["17", "12"]}], TraditionalForm]]],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"1", "+", 
+     FractionBox["1", 
+      RowBox[{"2", "+", 
+       FractionBox["1", 
+        RowBox[{"2", "+", 
+         FractionBox["1", 
+          RowBox[{"2", "+", 
+           FractionBox["1", "2"]}]]}]]}]]}], "=", 
+    FractionBox["41", "29"]}], TraditionalForm]]],
+ "\n \nHence the sequence of the first ten convergents for 2 are:\n\n",
+ StyleBox[Cell[BoxData[
+  FormBox[
+   RowBox[{"1", ",", 
+    FractionBox["3", "2"], ",", 
+    FractionBox["7", "5"], ",", 
+    FractionBox["17", "12"], ",", 
+    FractionBox["41", "29"], ",", 
+    FractionBox["99", "70"], ",", 
+    FractionBox["239", "169"], ",", 
+    FractionBox["577", "408"], ",", 
+    FractionBox["1393", "985"], ",", 
+    FractionBox["3363", "2378"], ",", "..."}], TraditionalForm]], "Output"], 
+  "Output"],
+ StyleBox["\n", "Output"],
+ "\nWhat is most surprising is that the important mathematical constant,\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"e", "=", 
+    RowBox[{"[", 
+     RowBox[{
+      RowBox[{"2", ";", "1"}], ",", "2", ",", "1", ",", "1", ",", "4", ",", 
+      "1", ",", "1", ",", "6", ",", "1", ",", "...", ",", "1", ",", 
+      RowBox[{"2", "k"}], ",", "1", ",", "..."}], "]"}]}], TraditionalForm]]],
+ ".\n\nThe first ten terms in the sequence of convergents for e are:\n\n",
+ StyleBox[Cell[BoxData[
+  FormBox[
+   RowBox[{"2", ",", "3", ",", 
+    FractionBox["8", "3"], ",", 
+    FractionBox["11", "4"], ",", 
+    FractionBox["19", "7"], ",", 
+    FractionBox["87", "32"], ",", 
+    FractionBox["106", "39"], ",", 
+    FractionBox["193", "71"], ",", 
+    FractionBox["1264", "465"], ",", 
+    FractionBox["1457", "536"], ",", "..."}], TraditionalForm]], "Output"], 
+  "Output"],
+ StyleBox["\n", "Output"],
+ "\nThe sum of digits in the numerator of the 10th convergent is ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"1", "+", "4", "+", "5", "+", "7"}], "=", "17"}], 
+   TraditionalForm]]],
+ ".\n\nFind the sum of digits in the numerator of the 100th convergent of the \
+continued fraction for ",
+ Cell[BoxData[
+  FormBox["e", TraditionalForm]]],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.519142869702774*^9, 3.519143297426238*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsection",
+ CellChangeTimes->{{3.5716126315899506`*^9, 3.5716126324700007`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Total", "[", 
+   RowBox[{"IntegerDigits", "[", 
+    RowBox[{"Numerator", "[", 
+     RowBox[{"FromContinuedFraction", "[", 
+      RowBox[{"Take", "[", 
+       RowBox[{
+        RowBox[{"Flatten", "[", 
+         RowBox[{"Prepend", "[", 
+          RowBox[{
+           RowBox[{"Table", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"1", ",", 
+               RowBox[{"2", "k"}], ",", "1"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"k", ",", "1", ",", "34"}], "}"}]}], "]"}], ",", 
+           RowBox[{"{", "2", "}"}]}], "]"}], "]"}], ",", "100"}], "]"}], 
+      "]"}], "]"}], "]"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.519142318954273*^9, 3.519142381824869*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.`", ",", "272"}], "}"}]], "Output",
+ CellChangeTimes->{{3.519142365449932*^9, 3.5191423825499105`*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Alternate Solution", "Subsection",
+ CellChangeTimes->{{3.519143321564619*^9, 3.5191433237587447`*^9}}],
+
+Cell["\<\
+This felt a little too much like cheating because it uses the built in \
+Convergents function. Since I already had created the Table of values \
+required I instead used that, although either solution provided the correct \
+answer in no time at all. Looking at the solutions posted in the Project \
+Euler forums it looks like a lot of people used the built in Convergents \
+function to find the solution.\
+\>", "Text",
+ CellChangeTimes->{{3.519143335078392*^9, 3.519143423244435*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Total", "[", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"IntegerDigits", "[", 
+     RowBox[{"Numerator", "[", 
+      RowBox[{"Take", "[", 
+       RowBox[{
+        RowBox[{"Convergents", "[", 
+         RowBox[{"E", ",", "100"}], "]"}], ",", 
+        RowBox[{"-", "1"}]}], "]"}], "]"}], "]"}], "]"}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.5191423952566376`*^9, 3.519142480556516*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.`", ",", "272"}], "}"}]], "Output",
+ CellChangeTimes->{{3.5191424219661655`*^9, 3.5191424813465614`*^9}}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 637},
+WindowMargins->{{168, Automatic}, {Automatic, 60}},
+FrontEndVersion->"8.0 for Microsoft Windows (32-bit) (October 6, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 96, 1, 71, "Section"],
+Cell[678, 25, 4029, 130, 710, "Text"],
+Cell[CellGroupData[{
+Cell[4732, 159, 100, 1, 36, "Subsection"],
+Cell[CellGroupData[{
+Cell[4857, 164, 767, 20, 112, "Input"],
+Cell[5627, 186, 145, 3, 30, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5821, 195, 108, 1, 36, "Subsection"],
+Cell[5932, 198, 493, 8, 83, "Text"],
+Cell[CellGroupData[{
+Cell[6450, 210, 441, 12, 31, "Input"],
+Cell[6894, 224, 147, 3, 30, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
