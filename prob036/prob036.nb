@@ -1,0 +1,133 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      3867,        123]
+NotebookOptionsPosition[      3373,        100]
+NotebookOutlinePosition[      3716,        115]
+CellTagsIndexPosition[      3673,        112]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Problem 36", "Section",
+ CellChangeTimes->{{3.518917504855063*^9, 3.518917508007243*^9}}],
+
+Cell[TextData[{
+ "The decimal number, 585 = ",
+ StyleBox[Cell[BoxData[
+  TagBox[
+   InterpretationBox[
+    SubscriptBox["\<\"1001001001\"\>", "\<\"2\"\>"],
+    585,
+    Editable->False],
+   BaseForm[#, 2]& ]], "Output",
+  CellChangeTimes->{3.518917589284892*^9}], "Output"],
+ StyleBox[" ", "Output"],
+ "(binary), is palindromic in both bases.Find the sum of all numbers, less \
+than one million, which are palindromic in base 10 and base 2.\n\n(Please \
+note that the palindromic number, in either base, may not include leading \
+zeros.)"
+}], "Text",
+ CellChangeTimes->{{3.518917554388896*^9, 3.51891756057125*^9}, {
+  3.5189175968243237`*^9, 3.51891763190733*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsection",
+ CellChangeTimes->{{3.571610449749156*^9, 3.571610450797216*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Total", "[", 
+   RowBox[{"DeleteCases", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"IntegerString", "[", 
+           RowBox[{"n", ",", "2"}], "]"}], "==", 
+          RowBox[{"StringReverse", "[", 
+           RowBox[{"IntegerString", "[", 
+            RowBox[{"n", ",", "2"}], "]"}], "]"}]}], ",", "n", ",", "Null"}], 
+        "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"n", ",", 
+         RowBox[{"DeleteCases", "[", 
+          RowBox[{
+           RowBox[{"Table", "[", 
+            RowBox[{
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"ToExpression", "[", 
+                 RowBox[{"StringReverse", "[", 
+                  RowBox[{"ToString", "[", "i", "]"}], "]"}], "]"}], "==", 
+                "i"}], ",", " ", "i", ",", "Null"}], "]"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", "1", ",", "1000000"}], "}"}]}], "]"}], ",", 
+           "Null"}], "]"}]}], "}"}]}], "]"}], ",", "Null"}], "]"}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.5189167110926623`*^9, 3.5189167661298103`*^9}, {
+  3.518916858180075*^9, 3.518916894534155*^9}, {3.518916939047701*^9, 
+  3.5189169499063215`*^9}, {3.518917015119052*^9, 3.518917022991502*^9}, {
+  3.5189170532312317`*^9, 3.518917105877243*^9}, {3.518917305196643*^9, 
+  3.5189174085895567`*^9}, {3.5189174395473275`*^9, 3.518917462230625*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"12.526999999999997`", ",", "872187"}], "}"}]], "Output",
+ CellChangeTimes->{{3.5189168861876774`*^9, 3.5189168953001986`*^9}, 
+   3.518916950713368*^9, 3.518917023381524*^9, {3.518917371108413*^9, 
+   3.5189174090005803`*^9}, {3.5189174535861306`*^9, 3.518917476093418*^9}}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 637},
+WindowMargins->{{Automatic, 69}, {Automatic, 60}},
+FrontEndVersion->"8.0 for Microsoft Windows (32-bit) (October 6, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 95, 1, 71, "Section"],
+Cell[677, 25, 665, 17, 83, "Text"],
+Cell[CellGroupData[{
+Cell[1367, 46, 96, 1, 36, "Subsection"],
+Cell[CellGroupData[{
+Cell[1488, 51, 1528, 37, 132, "Input"],
+Cell[3019, 90, 314, 5, 30, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
