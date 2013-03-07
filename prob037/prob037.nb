@@ -1,0 +1,152 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      4752,        142]
+NotebookOptionsPosition[      4256,        119]
+NotebookOutlinePosition[      4599,        134]
+CellTagsIndexPosition[      4556,        131]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Problem 37", "Section",
+ CellChangeTimes->{{3.5189772538262157`*^9, 3.51897725548031*^9}}],
+
+Cell["\<\
+The number 3797 has an interesting property. Being prime itself, it is \
+possible to continuously remove digits from left to right, and remain prime \
+at each stage: 3797, 797, 97, and 7. Similarly we can work from right to \
+left: 3797, 379, 37, and 3.
+
+Find the sum of the only eleven primes that are both truncatable from left to \
+right and right to left.
+
+NOTE: 2, 3, 5, and 7 are not considered to be truncatable primes.\
+\>", "Text",
+ CellChangeTimes->{3.5189772795256853`*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsection",
+ CellChangeTimes->{{3.57161052761361*^9, 3.571610528557664*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", "primes", "}"}], ",", 
+    RowBox[{
+     RowBox[{"primes", "=", 
+      RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Do", "[", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Count", "[", 
+           RowBox[{
+            RowBox[{"PrimeQ", "[", 
+             RowBox[{"Join", "[", 
+              RowBox[{
+               RowBox[{"Table", "[", 
+                RowBox[{
+                 RowBox[{"FromDigits", "[", 
+                  RowBox[{"Take", "[", 
+                   RowBox[{
+                    RowBox[{"IntegerDigits", "[", "p", "]"}], ",", 
+                    RowBox[{"-", "i"}]}], "]"}], "]"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"i", ",", "1", ",", 
+                   RowBox[{"IntegerLength", "[", "p", "]"}]}], "}"}]}], "]"}],
+                ",", 
+               RowBox[{"Table", "[", 
+                RowBox[{
+                 RowBox[{"FromDigits", "[", 
+                  RowBox[{"Take", "[", 
+                   RowBox[{
+                    RowBox[{"IntegerDigits", "[", "p", "]"}], ",", "i"}], 
+                   "]"}], "]"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"i", ",", "1", ",", 
+                   RowBox[{"IntegerLength", "[", "p", "]"}]}], "}"}]}], 
+                "]"}]}], "\[IndentingNewLine]", "]"}], "]"}], ",", "False"}], 
+           "]"}], " ", "\[Equal]", " ", "0"}], ",", 
+         RowBox[{"AppendTo", "[", 
+          RowBox[{"primes", ",", "p"}], "]"}], ",", "Continue"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"p", ",", 
+         RowBox[{"Prime", "[", 
+          RowBox[{"Range", "[", 
+           RowBox[{"1", ",", "100000"}], "]"}], "]"}]}], "}"}]}], "]"}], ";", 
+     " ", 
+     RowBox[{
+      RowBox[{"Total", "[", "primes", "]"}], "-", 
+      RowBox[{"Total", "[", 
+       RowBox[{"Prime", "[", 
+        RowBox[{"Range", "[", 
+         RowBox[{"1", ",", "4"}], "]"}], "]"}], "]"}]}]}]}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.5189753698254566`*^9, 3.51897547985075*^9}, {
+  3.5189756023547564`*^9, 3.5189756308693876`*^9}, {3.5189756824603386`*^9, 
+  3.5189757619738865`*^9}, {3.518975896988609*^9, 3.5189759012248507`*^9}, {
+  3.5189761324030733`*^9, 3.5189761414545918`*^9}, {3.5189761799817953`*^9, 
+  3.5189763260451493`*^9}, {3.518976428037983*^9, 3.5189764340553274`*^9}, {
+  3.5189764750006695`*^9, 3.5189764792269106`*^9}, {3.518976647870557*^9, 
+  3.5189766866267734`*^9}, {3.518976788982628*^9, 3.518976807760702*^9}, {
+  3.5189768404455714`*^9, 3.5189768508951693`*^9}, {3.518976923713334*^9, 
+  3.518976942492408*^9}, {3.518977032415551*^9, 3.5189770618562355`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"16.318000000000072`", ",", "748317"}], "}"}]], "Output",
+ CellChangeTimes->{3.5189770791762257`*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 637},
+WindowMargins->{{Automatic, 45}, {38, Automatic}},
+FrontEndVersion->"8.0 for Microsoft Windows (32-bit) (October 6, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 96, 1, 71, "Section"],
+Cell[678, 25, 494, 11, 119, "Text"],
+Cell[CellGroupData[{
+Cell[1197, 40, 95, 1, 36, "Subsection"],
+Cell[CellGroupData[{
+Cell[1317, 45, 2756, 64, 172, "Input"],
+Cell[4076, 111, 140, 3, 30, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
