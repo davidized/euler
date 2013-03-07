@@ -1,0 +1,276 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      8193,        267]
+NotebookOptionsPosition[      7083,        223]
+NotebookOutlinePosition[      7449,        239]
+CellTagsIndexPosition[      7406,        236]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Problem 340", "Title",
+ CellChangeTimes->{{3.519764048269271*^9, 3.519764058820874*^9}}],
+
+Cell[TextData[{
+ "For fixed integers a, b, c, define the crazy function F(n) as follows:\n",
+ Cell[BoxData[{
+  FormBox[
+   RowBox[{
+    RowBox[{"F", "(", "n", ")"}], "=", 
+    RowBox[{
+     RowBox[{"n", "-", 
+      RowBox[{"c", " ", "for", " ", "all", " ", "n"}]}], ">", "b"}]}], 
+   TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{
+    RowBox[{"F", "(", "n", ")"}], "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"F", "(", 
+       RowBox[{"a", "+", 
+        RowBox[{"F", "(", 
+         RowBox[{"a", "+", 
+          RowBox[{"F", "(", 
+           RowBox[{"a", "+", 
+            RowBox[{"F", "(", 
+             RowBox[{"a", "+", "n"}], ")"}]}], ")"}]}], ")"}]}], ")"}], " ", 
+      "for", " ", "all", " ", "n"}], "\[LessEqual]", "b"}]}], 
+   TraditionalForm]}],
+  FormatType->"TraditionalForm"],
+ "\n\nAlso, define ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"S", "(", 
+     RowBox[{"a", ",", "b", ",", "c"}], ")"}], "=", 
+    RowBox[{
+     UnderoverscriptBox["\[Sum]", 
+      RowBox[{"n", "=", "0"}], "b"], 
+     RowBox[{"F", "(", "n", ")"}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "  \n\nFor example, if a = 50, b = 2000 and c = 40, then F(0) = 3240 and \
+F(2000) = 2040.\nAlso, S(50, 2000, 40) = 5204240.\n\nFind the last 9 digits \
+of ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"S", "(", 
+    RowBox[{
+     SuperscriptBox["2", "17"], ",", 
+     SuperscriptBox["7", "21"], ",", 
+     SuperscriptBox["12", "7"]}], ")"}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.5197640730196867`*^9, 3.5197641197423587`*^9}, {
+  3.5197641652789636`*^9, 3.519764260744424*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"f", "[", 
+    RowBox[{"a_", ",", "b_", ",", "c_", ",", "n_"}], "]"}], ":=", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{"n", "\[LessEqual]", "b"}], ",", 
+     RowBox[{"f", "[", 
+      RowBox[{"a", ",", "b", ",", "c", ",", 
+       RowBox[{"a", "+", 
+        RowBox[{"f", "[", 
+         RowBox[{"a", ",", "b", ",", "c", ",", 
+          RowBox[{"a", "+", 
+           RowBox[{"f", "[", 
+            RowBox[{"a", ",", "b", ",", "c", ",", 
+             RowBox[{"a", "+", 
+              RowBox[{"f", "[", 
+               RowBox[{"a", ",", "b", ",", "c", ",", 
+                RowBox[{"a", "+", "n"}]}], "]"}]}]}], "]"}]}]}], "]"}]}]}], 
+      "]"}], ",", 
+     RowBox[{"n", "-", "c"}]}], "]"}]}], ";", " ", 
+  RowBox[{
+   RowBox[{"s", "[", 
+    RowBox[{"a_", ",", "b_", ",", "c_"}], "]"}], ":=", 
+   RowBox[{"Sum", "[", 
+    RowBox[{
+     RowBox[{"f", "[", 
+      RowBox[{"a", ",", "b", ",", "c", ",", "n"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", "0", ",", "b"}], "}"}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.519764278565443*^9, 3.519764410631997*^9}, {
+   3.51976444513097*^9, 3.519764471199461*^9}, {3.5197646364399123`*^9, 
+   3.519764649391653*^9}, {3.5197647585438967`*^9, 3.5197647615550685`*^9}, {
+   3.5197650702007217`*^9, 3.5197650714347925`*^9}, 3.519765124104805*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"f", "[", 
+  RowBox[{"50", ",", "2000", ",", "40", ",", "0"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5197645458187294`*^9, 3.5197645566073465`*^9}, 
+   3.5197646210040293`*^9, {3.5197646644125123`*^9, 3.519764665891597*^9}}],
+
+Cell[BoxData["3240"], "Output",
+ GeneratedCell->False,
+ CellAutoOverwrite->False,
+ CellChangeTimes->{
+  3.519764590504285*^9, 3.5197646210160303`*^9, {3.51976465527199*^9, 
+   3.5197646728619957`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"f", "[", 
+  RowBox[{"50", ",", "2000", ",", "40", ",", "2000"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5197646774532585`*^9, 3.519764681835509*^9}}],
+
+Cell[BoxData["2040"], "Output",
+ CellChangeTimes->{3.519764682272534*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"s", "[", 
+  RowBox[{"50", ",", "2000", ",", "40"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5197646914480586`*^9, 3.5197646950142627`*^9}}],
+
+Cell[BoxData["5204240"], "Output",
+ CellChangeTimes->{3.5197646956983013`*^9, 3.5197647663213415`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Sum", "[", 
+  RowBox[{
+   RowBox[{"f", "[", 
+    RowBox[{"50", ",", "2000", ",", "40", ",", "n"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"n", ",", "0", ",", "2000"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.5197647323743997`*^9, 3.519764747671274*^9}}],
+
+Cell[BoxData["5204240"], "Output",
+ CellChangeTimes->{3.51976475021542*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"s", "[", 
+  RowBox[{"50", ",", "2000", ",", "40"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5197647994882383`*^9, 3.519764804131504*^9}}],
+
+Cell[BoxData["5204240"], "Output",
+ CellChangeTimes->{3.51976480686066*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TimeConstrained", "[", 
+  RowBox[{
+   RowBox[{"Timing", "[", 
+    RowBox[{"s", "[", 
+     RowBox[{
+      RowBox[{"2", "^", "17"}], ",", 
+      RowBox[{"7", "^", "21"}], ",", 
+      RowBox[{"12", "^", "7"}]}], "]"}], "]"}], ",", "120"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5197648502661424`*^9, 3.5197649029221544`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"ParallelSum", "::", "iterb"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Iterator \[NoBreak]\\!\\({n, 0, 558545864083284007}\\)\
+\[NoBreak] does not have appropriate bounds. \\!\\(\\*ButtonBox[\\\"\
+\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/iterb\\\", ButtonNote -> \
+\\\"ParallelSum::iterb\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.519765078371189*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"ParallelSum", "::", "nopar1"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"\[NoBreak]\\!\\(ParallelSum[\\(\\(\\(\\(f[\\(\\(131072, \
+558545864083284007, 35831808, n\\)\\)]\\)\\), \\(\\({n, 0, \
+558545864083284007}\\)\\)\\)\\)]\\)\[NoBreak] cannot be parallelized; \
+proceeding with sequential evaluation. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/ParallelSum\\\", ButtonNote -> \
+\\\"ParallelSum::nopar1\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.519765078451194*^9}],
+
+Cell[BoxData["$Aborted"], "Output",
+ CellChangeTimes->{3.519764892862579*^9, 3.5197650238430705`*^9, 
+  3.5197651950048604`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 517},
+WindowMargins->{{Automatic, 45}, {Automatic, 22}},
+ShowSelection->True,
+FrontEndVersion->"8.0 for Microsoft Windows (32-bit) (February 23, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 94, 1, 83, "Title"],
+Cell[676, 25, 1652, 51, 194, "Text"],
+Cell[2331, 78, 1355, 34, 72, "Input"],
+Cell[CellGroupData[{
+Cell[3711, 116, 248, 4, 31, "Input"],
+Cell[3962, 122, 201, 5, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4200, 132, 173, 3, 31, "Input"],
+Cell[4376, 137, 73, 1, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4486, 143, 162, 3, 31, "Input"],
+Cell[4651, 148, 102, 1, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4790, 154, 288, 7, 31, "Input"],
+Cell[5081, 163, 75, 1, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5193, 169, 160, 3, 31, "Input"],
+Cell[5356, 174, 75, 1, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5468, 180, 347, 9, 31, "Input"],
+Cell[5818, 191, 491, 10, 21, "Message"],
+Cell[6312, 203, 612, 12, 56, "Message"],
+Cell[6927, 217, 128, 2, 30, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
