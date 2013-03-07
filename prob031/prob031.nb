@@ -1,0 +1,98 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      2373,         88]
+NotebookOptionsPosition[      1880,         65]
+NotebookOutlinePosition[      2223,         80]
+CellTagsIndexPosition[      2180,         77]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Problem 31", "Section",
+ CellChangeTimes->{{3.5283283953651385`*^9, 3.528328403062579*^9}}],
+
+Cell["\<\
+In England the currency is made up of pound, \[Sterling], and pence, p, and \
+there are eight coins in general circulation : 
+
+1 p, 2 p, 5 p, 10 p, 20 p, 50 p, \[Sterling]1 (100 p) and \[Sterling]2 (200 p).
+
+It is possible to make \[Sterling]2 in the following way : 
+
+1 \[Sterling]1 + 150 p + 220 p + 15 p + 12 p + 31 p
+
+How many different ways can \[Sterling]2 be made using any number of coins?\
+\>", "Text",
+ CellChangeTimes->{{3.5283284580587244`*^9, 3.5283284897785387`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsection",
+ CellChangeTimes->{{3.5716049661495123`*^9, 3.5716049670445633`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Length", "[", 
+   RowBox[{"IntegerPartitions", "[", 
+    RowBox[{"200", ",", "All", ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "1", ",", "2", ",", "5", ",", "10", ",", "20", ",", "50", ",", "100", 
+       ",", "200"}], "}"}]}], "]"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5283284181784434`*^9, 3.528328446469062*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.374999999999999`", ",", "73682"}], "}"}]], "Output",
+ CellChangeTimes->{3.5283284500442657`*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 637},
+WindowMargins->{{Automatic, 141}, {8, Automatic}},
+FrontEndVersion->"8.0 for Microsoft Windows (32-bit) (October 6, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 97, 1, 71, "Section"],
+Cell[679, 25, 491, 12, 173, "Text"],
+Cell[CellGroupData[{
+Cell[1195, 41, 100, 1, 36, "Subsection"],
+Cell[CellGroupData[{
+Cell[1320, 46, 379, 9, 31, "Input"],
+Cell[1702, 57, 138, 3, 30, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
