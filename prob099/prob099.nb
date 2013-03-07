@@ -1,0 +1,142 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      4074,        132]
+NotebookOptionsPosition[      3650,        112]
+NotebookOutlinePosition[      3994,        127]
+CellTagsIndexPosition[      3951,        124]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Problem 99", "Section",
+ CellChangeTimes->{{3.5190510008581767`*^9, 3.519051008818632*^9}}],
+
+Cell[TextData[{
+ "Comparing two numbers written in index form like ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["2", "11"], TraditionalForm]]],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["3", "7"], TraditionalForm]]],
+ " is not difficult, as any calculator would confirm that ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["2", "11"], "=", 
+    RowBox[{
+     RowBox[{"2048", "<", 
+      SuperscriptBox["3", "7"]}], "=", "2187"}]}], TraditionalForm]]],
+ ".\n\nHowever, confirming that ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["632382", "518061"], ">", 
+    SuperscriptBox["519432", "525806"]}], TraditionalForm]]],
+ " would be much more difficult, as both numbers contain over three million \
+digits.Using ",
+ ButtonBox["base_exp.txt",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://projecteuler.net/project/base_exp.txt"], None},
+  ButtonNote->"http://projecteuler.net/project/base_exp.txt"],
+ " (right click and' Save Link/Target As ...'), a 22 K text file containing \
+one thousand lines with a base/exponent pair on each line, determine which \
+line number has the greatest numerical value.\n\nNOTE : The first two lines \
+in the file represent the numbers in the example given above."
+}], "Text",
+ CellChangeTimes->{{3.5190510211393366`*^9, 3.519051051416068*^9}, {
+  3.519052220411931*^9, 3.5190523183485327`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", "test", "}"}], ",", 
+    RowBox[{
+     RowBox[{"test", " ", "=", " ", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"FromDigits", "[", 
+          RowBox[{"j", "[", 
+           RowBox[{"[", "2", "]"}], "]"}], "]"}], 
+         RowBox[{"Log", "[", 
+          RowBox[{"FromDigits", "[", 
+           RowBox[{"j", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "]"}], "]"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"j", ",", 
+          RowBox[{"Flatten", "[", 
+           RowBox[{
+            RowBox[{"Table", "[", 
+             RowBox[{
+              RowBox[{"StringSplit", "[", 
+               RowBox[{"i", ",", "\"\<,\>\""}], "]"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"i", ",", 
+                RowBox[{"Import", "[", 
+                 RowBox[{
+                 "\"\<http://projecteuler.net/project/base_exp.txt\>\"", ",", 
+                  "\"\<Table\>\""}], "]"}]}], "}"}]}], "]"}], ",", "1"}], 
+           "]"}]}], "}"}]}], "]"}]}], ";", 
+     RowBox[{"Position", "[", 
+      RowBox[{"test", ",", 
+       RowBox[{"Max", "[", "test", "]"}]}], "]"}]}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5190507262364693`*^9, 3.5190508888307695`*^9}, {
+  3.519050976564787*^9, 3.519050977359833*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.18700000000005718`", ",", 
+   RowBox[{"{", 
+    RowBox[{"{", "709", "}"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.519050980038986*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 637},
+WindowMargins->{{264, Automatic}, {Automatic, 30}},
+FrontEndVersion->"8.0 for Microsoft Windows (32-bit) (October 6, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 97, 1, 71, "Section"],
+Cell[679, 25, 1375, 36, 155, "Text"],
+Cell[CellGroupData[{
+Cell[2079, 65, 1355, 36, 132, "Input"],
+Cell[3437, 103, 185, 5, 30, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
