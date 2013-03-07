@@ -1,0 +1,108 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      2825,         98]
+NotebookOptionsPosition[      2331,         75]
+NotebookOutlinePosition[      2675,         90]
+CellTagsIndexPosition[      2632,         87]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Problem 206", "Section",
+ CellChangeTimes->{{3.519080942907764*^9, 3.51908094493888*^9}}],
+
+Cell["\<\
+Find the unique positive integer whose square has the form \
+1_2_3_4_5_6_7_8_9_0, where each \[OpenCurlyDoubleQuote]_\
+\[CloseCurlyDoubleQuote] is a single digit.\
+\>", "Text",
+ CellChangeTimes->{3.5190809641379786`*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsection",
+ CellChangeTimes->{{3.5716150214146404`*^9, 3.5716150222526884`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Catch", "[", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"FromDigits", "[", 
+         RowBox[{"Pick", "[", 
+          RowBox[{
+           RowBox[{"IntegerDigits", "[", 
+            RowBox[{"i", "^", "2"}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+            "1", ",", "0", ",", "1", ",", "0", ",", "1", ",", "0", ",", "1", 
+             ",", "0", ",", "1", ",", "0", ",", "1", ",", "0", ",", "1", ",", 
+             "0", ",", "1", ",", "0", ",", "1"}], "}"}], ",", "1"}], "]"}], 
+         "]"}], "==", " ", "123456789"}], ",", 
+       RowBox[{"Throw", "[", 
+        RowBox[{"i", "*", "10"}], "]"}], ",", "Continue"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "138902662", ",", "101010101", ",", 
+       RowBox[{"-", "1"}]}], "}"}]}], "]"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5190804016978083`*^9, 3.5190804335666313`*^9}, {
+  3.5190804661054926`*^9, 3.5190804866306667`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.01599999999977042`", ",", "1389019170"}], "}"}]], "Output",
+ CellChangeTimes->{{3.5190804515016575`*^9, 3.519080470702756*^9}, 
+   3.519080505410741*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 637},
+WindowMargins->{{288, Automatic}, {Automatic, 60}},
+FrontEndVersion->"8.0 for Microsoft Windows (32-bit) (October 6, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 95, 1, 71, "Section"],
+Cell[677, 25, 230, 5, 29, "Text"],
+Cell[CellGroupData[{
+Cell[932, 34, 100, 1, 36, "Subsection"],
+Cell[CellGroupData[{
+Cell[1057, 39, 1036, 25, 152, "Input"],
+Cell[2096, 66, 195, 4, 30, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
