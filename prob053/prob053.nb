@@ -1,0 +1,145 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      3828,        135]
+NotebookOptionsPosition[      3333,        112]
+NotebookOutlinePosition[      3675,        127]
+CellTagsIndexPosition[      3632,        124]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Problem 53 - optimize - nested Dos", "Section",
+ CellChangeTimes->{{3.5190438459519396`*^9, 3.5190438541874104`*^9}, {
+  3.5195350996654515`*^9, 3.519535105277773*^9}}],
+
+Cell[TextData[{
+ "There are exactly ten ways of selecting three from five, 12345:\n\n123, \
+124, 125, 134, 135, 145, 234, 235, 245, and 345\n\nIn combinatorics, we use \
+the notation, 5C3 = 10.\n\nIn general, ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"nCr", "=", 
+    FractionBox[
+     RowBox[{"n", "!"}], 
+     RowBox[{
+      RowBox[{"r", "!"}], 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"n", "-", "r"}], ")"}], "!"}]}]]}], TraditionalForm]]],
+ ", where ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"r", "\[LessEqual]", "n"}], TraditionalForm]]],
+ ", ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"n", "!"}], " ", "=", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"n", "(", 
+       RowBox[{"n", "-", "1"}], ")"}], "..."}], 
+     RowBox[{"(", "3", ")"}], 
+     RowBox[{"(", "2", ")"}], 
+     RowBox[{"(", "1", ")"}]}]}], TraditionalForm]]],
+ ", and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"0", "!"}], " ", "=", "1"}], TraditionalForm]]],
+ ".\nIt is not until n = 23, that a value exceeds one-million: 23C10 = \
+1144066.\n\nHow many, not necessarily distinct, values of  nCr, for ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"1", "\[LessEqual]", "n", "\[LessEqual]", "100"}], 
+   TraditionalForm]]],
+ ", are greater than one-million?"
+}], "Text",
+ CellChangeTimes->{{3.519044086846718*^9, 3.5190440977723427`*^9}, {
+  3.5190441284180956`*^9, 3.5190442531152277`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Subsection",
+ CellChangeTimes->{{3.5716120427662716`*^9, 3.571612043669323*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", "count", "}"}], ",", 
+    RowBox[{
+     RowBox[{"count", "=", "0"}], ";", " ", 
+     RowBox[{"Do", "[", 
+      RowBox[{
+       RowBox[{"Do", "[", 
+        RowBox[{
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Binomial", "[", 
+             RowBox[{"n", ",", "r"}], "]"}], ">", "1000000"}], ",", 
+           RowBox[{"count", " ", "=", " ", 
+            RowBox[{"count", "+", "1"}]}], ",", "Continue"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"r", ",", "1", ",", "n"}], "}"}]}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"n", ",", "1", ",", "100"}], "}"}]}], "]"}], ";", " ", 
+     "count"}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.5190436923331532`*^9, 3.519043808115775*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.04599999999970139`", ",", "4075"}], "}"}]], "Output",
+ CellChangeTimes->{{3.519043798436222*^9, 3.519043809630862*^9}}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 637},
+WindowMargins->{{96, Automatic}, {8, Automatic}},
+FrontEndVersion->"8.0 for Microsoft Windows (32-bit) (October 6, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 174, 2, 71, "Section"],
+Cell[756, 26, 1382, 44, 202, "Text"],
+Cell[CellGroupData[{
+Cell[2163, 74, 98, 1, 36, "Subsection"],
+Cell[CellGroupData[{
+Cell[2286, 79, 843, 23, 72, "Input"],
+Cell[3132, 104, 161, 3, 30, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
