@@ -1,0 +1,237 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      6338,        227]
+NotebookOptionsPosition[      5151,        179]
+NotebookOutlinePosition[      5495,        194]
+CellTagsIndexPosition[      5452,        191]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Problem 69 - move Notes", "Section",
+ CellChangeTimes->{{3.5190464541601205`*^9, 3.5190464558232155`*^9}, {
+  3.519535139374723*^9, 3.5195351439489846`*^9}}],
+
+Cell["\<\
+Euler\[CloseCurlyQuote]s Totient function, \[CurlyPhi](n) [sometimes called \
+the phi function], is used to determine the number of numbers less than n \
+which are relatively prime to n. For example, as 1, 2, 4, 5, 7, and 8, are \
+all less than nine and relatively prime to nine, \[CurlyPhi](9)=6.
+
+n\tRelatively Prime\t\[CurlyPhi](n)\tn/\[CurlyPhi](n)
+2\t1\t\t\t1\t2
+3\t1,2\t\t\t2\t1.5
+4\t1,3\t\t\t2\t2
+5\t1,2,3,4\t\t\t4\t1.25
+6\t1,5\t\t\t2\t3
+7\t1,2,3,4,5,6\t\t6\t1.1666...
+8\t1,3,5,7\t\t\t4\t2
+9\t1,2,4,5,7,\t\t8\t1.5
+10\t1,3,7,9\t\t\t4\t2.5
+
+It can be seen that n=6 produces a maximum n/\[CurlyPhi](n) for n  10.
+
+Find the value of n  1,000,000 for which n/\[CurlyPhi](n) is a maximum.\
+\>", "Text",
+ CellChangeTimes->{
+  3.5190464641986947`*^9, {3.5190465315195456`*^9, 3.5190465713488235`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Process", "Subsection",
+ CellChangeTimes->{{3.51904658422456*^9, 3.51904658510361*^9}}],
+
+Cell["\<\
+Verify that the EulerPhi function does what I think it should.\
+\>", "Text",
+ CellChangeTimes->{{3.519046646604128*^9, 3.519046662706049*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"EulerPhi", "[", "2", "]"}], " "}]], "Input",
+ CellChangeTimes->{{3.5190458893568153`*^9, 3.5190458933560443`*^9}, {
+  3.519046618004492*^9, 3.5190466403967724`*^9}}],
+
+Cell[BoxData["1"], "Output",
+ CellChangeTimes->{{3.5190466365825543`*^9, 3.5190466411688166`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EulerPhi", "[", "10", "]"}]], "Input",
+ CellChangeTimes->{{3.5190458955261683`*^9, 3.5190458999884233`*^9}}],
+
+Cell[BoxData["4"], "Output",
+ CellChangeTimes->{3.5190459007314663`*^9, 3.5190466420378666`*^9}]
+}, Open  ]],
+
+Cell["\<\
+Try generating a small table with the function. Then find the max of the \
+array and the position in the table. I wanted to verify that the Position \
+result would be equal to n, otherwise I was going to have to adjust the \
+result.\
+\>", "Text",
+ CellChangeTimes->{{3.519046674199706*^9, 3.519046739767456*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{"n", "/", 
+    RowBox[{"EulerPhi", "[", "n", "]"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"n", ",", "1", ",", "10"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.5190459956238937`*^9, 3.519046075447459*^9}, {
+  3.5190462212557993`*^9, 3.519046224317974*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", "2", ",", 
+   FractionBox["3", "2"], ",", "2", ",", 
+   FractionBox["5", "4"], ",", "3", ",", 
+   FractionBox["7", "6"], ",", "2", ",", 
+   FractionBox["3", "2"], ",", 
+   FractionBox["5", "2"]}], "}"}]], "Output",
+ CellChangeTimes->{3.519046077654586*^9, 3.519046225314031*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Max", "[", "%", "]"}]], "Input",
+ CellChangeTimes->{{3.519046232862463*^9, 3.519046234836576*^9}}],
+
+Cell[BoxData["3"], "Output",
+ CellChangeTimes->{3.5190462352536*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Position", "[", 
+  RowBox[{
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"n", "/", 
+      RowBox[{"EulerPhi", "[", "n", "]"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", "1", ",", "10"}], "}"}]}], "]"}], ",", "3"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.519046240692911*^9, 3.5190462810152173`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", "6", "}"}], "}"}]], "Output",
+ CellChangeTimes->{3.5190462831913414`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Answer", "Subsection",
+ CellChangeTimes->{{3.5190465922720203`*^9, 3.5190465930310636`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Timing", "[", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", "array", "}"}], ",", 
+    RowBox[{
+     RowBox[{"array", "=", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"n", "/", 
+         RowBox[{"EulerPhi", "[", "n", "]"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"n", ",", "1", ",", "1000000"}], "}"}]}], "]"}]}], ";", 
+     RowBox[{"Position", "[", 
+      RowBox[{"array", ",", 
+       RowBox[{"Max", "[", "array", "]"}]}], "]"}]}]}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.519046307062707*^9, 3.519046373800524*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"25.304000000000208`", ",", 
+   RowBox[{"{", 
+    RowBox[{"{", "510510", "}"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.5190464040022516`*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{707, 637},
+WindowMargins->{{192, Automatic}, {38, Automatic}},
+FrontEndVersion->"8.0 for Microsoft Windows (32-bit) (October 6, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 163, 2, 71, "Section"],
+Cell[745, 26, 810, 22, 335, "Text"],
+Cell[CellGroupData[{
+Cell[1580, 52, 93, 1, 36, "Subsection"],
+Cell[1676, 55, 152, 3, 29, "Text"],
+Cell[CellGroupData[{
+Cell[1853, 62, 200, 4, 31, "Input"],
+Cell[2056, 68, 98, 1, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2191, 74, 132, 2, 31, "Input"],
+Cell[2326, 78, 96, 1, 30, "Output"]
+}, Open  ]],
+Cell[2437, 82, 322, 6, 47, "Text"],
+Cell[CellGroupData[{
+Cell[2784, 92, 321, 8, 31, "Input"],
+Cell[3108, 102, 327, 8, 47, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3472, 115, 122, 2, 31, "Input"],
+Cell[3597, 119, 68, 1, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3702, 125, 342, 10, 31, "Input"],
+Cell[4047, 137, 117, 3, 30, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4213, 146, 98, 1, 36, "Subsection"],
+Cell[CellGroupData[{
+Cell[4336, 151, 583, 16, 52, "Input"],
+Cell[4922, 169, 189, 5, 30, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
